@@ -40,6 +40,7 @@ export function process(command: (editor : vscode.TextEditor, currentNode: json.
 	}
 	vscode.debug.activeDebugSession ? vscode.window.showWarningMessage(jsonNodeToString(node)) : "";
 	editor.selection = command(editor, node);
+	editor.revealRange(new vscode.Range(editor.selection.start, editor.selection.end));	
 }
 
 
