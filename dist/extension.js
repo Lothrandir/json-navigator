@@ -81,6 +81,7 @@ function process(command) {
     }
     vscode.debug.activeDebugSession ? vscode.window.showWarningMessage(jsonNodeToString(node)) : "";
     editor.selection = command(editor, node);
+    editor.revealRange(new vscode.Range(editor.selection.start, editor.selection.end));
 }
 function jsonNodeToString(node) {
     return JSON.stringify({
