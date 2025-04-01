@@ -53,12 +53,9 @@ exports.getCurrentNode = getCurrentNode;
 // Import the module and reference it with the alias vscode in your code below
 const vscode = __importStar(__webpack_require__(1));
 const json = __importStar(__webpack_require__(2));
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
+// This method is called when extension is activated
+// The extension is activated the very first time the command is executed
 function activate(context) {
-    // Use the console to output diagnostic information (console.log) and errors (console.error)
-    // This line of code will only be executed once when your extension is activated
-    console.log('Congratulations, your extension "helloworld" is now active!');
     const disposables = [
         vscode.commands.registerCommand('json-navigator.step-out', () => process(outOfNode)),
         vscode.commands.registerCommand('json-navigator.step-in', () => process(intoNode)),

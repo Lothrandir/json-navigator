@@ -1,41 +1,37 @@
 # JSON Navigator README
 
 The JSON Navigator adds keyboard commands and keyboard shortcuts to easily navigate a json document.
+You can step into and out of objects, arrays and properties.
+You can step up and down an array list and between properties in an object.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+4 Commands (Keyboard shortcut):
 
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+- Step in (Ctrl+RightArrow)
+    - Object -> first key-value pair
+    - key/key-value pair -> value
+    - Array -> first item in array
+- Step out (Ctrl+LeftArrow)
+    - value -> key-value pair
+    - key/key-value pair -> object
+    - Array item -> array
+- Step next (Ctrl+DownArrow)
+    - Key/value -> next key-value pair in object
+    - Array item -> next array item
+- Step previous (Ctrl+DownArrow)
+    - Key/value -> previous key-value pair in object
+    - Array item -> previous array item
 
 ## Known Issues
 
-If cursor is at the end of the file no json node is found. Generally the cursor has to be in or in front of the node to register it.
+If the cursor is placed after the last closing bracket no shortcuts work.
 
 ## Release Notes
 
 Users appreciate release notes as you update your extension.
 
-### 1.0.0
+### 0.1.0
 
 Initial release of ...
 
