@@ -6,8 +6,8 @@
     "url": "https://github.com/Lothrandir/json-navigator.git"
   },
   "displayName": "JSON Navigator",
-  "description": "This is my first extension",
-  "version": "0.0.1",
+  "description": "Simple shurtcuts to better navigate large JSON data structures",
+  "version": "0.1.0",
   "engines": {
     "vscode": "^1.96.0"
   },
