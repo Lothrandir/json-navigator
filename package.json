@@ -1,5 +1,10 @@
 {
   "name": "json-navigator",
+  "publisher": "lothrandir",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lothrandir/json-navigator.git"
+  },
   "displayName": "JSON Navigator",
   "description": "This is my first extension",
   "version": "0.0.1",
