@@ -19,7 +19,7 @@ You can step up and down an array list and between properties in an object.
 - Step next (Ctrl+DownArrow)
     - Key/value -> next key-value pair in object
     - Array item -> next array item
-- Step previous (Ctrl+DownArrow)
+- Step previous (Ctrl+UpArrow)
     - Key/value -> previous key-value pair in object
     - Array item -> previous array item
 
