@@ -1,4 +1,4 @@
-# JSON Navigator README
+# JSON Navigator
 
 The JSON Navigator adds keyboard commands and keyboard shortcuts to easily navigate a json document.
 You can step into and out of objects, arrays and properties.
