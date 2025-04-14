@@ -39,9 +39,21 @@
         "when": "editorTextFocus && editorLangId == json"
       },
       {
+        "command": "json-navigator.include-next",
+        "key": "Ctrl+shift+down",
+        "mac": "Ctrl+shift+down",
+        "when": "editorTextFocus && editorLangId == json"
+      },
+      {
         "command": "json-navigator.step-previous",
         "key": "Ctrl+up",
         "mac": "Ctrl+up",
+        "when": "editorTextFocus && editorLangId == json"
+      },
+      {
+        "command": "json-navigator.include-previous",
+        "key": "Ctrl+shift+up",
+        "mac": "Ctrl+shift+up",
         "when": "editorTextFocus && editorLangId == json"
       }
     ],
@@ -55,12 +67,20 @@
         "title": "Step out of selected json"
       },
       {
+        "command": "json-navigator.step-next",
+        "title": "Step over to next item in json"
+      },
+      {
+        "command": "json-navigator.include-next",
+        "title": "Include the next item in the selection"
+      },
+      {
         "command": "json-navigator.step-previous",
         "title": "Step over previous item in json"
       },
       {
-        "command": "json-navigator.step-next",
-        "title": "Step over to next item in json"
+        "command": "json-navigator.include-previous",
+        "title": "Include the previous item in the selection"
       }
     ]
   },

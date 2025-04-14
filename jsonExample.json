@@ -1,13 +1,39 @@
 {
-    "listStringKey" : ["0", "1", "2"],
-    "listBoolKey" : [true, true, false],
-    "listIntKey" : [0, 1, 2],
-
-    "listComplex" : [[0.0, 0.1, 0.22], {
-        "key0.0": "value0.0",
-        "key0.1": "value0.1"
-    }, 2],
-    "listObjKey" : [ 
+    "listStringKey": [
+        "0",
+        "1",
+        "2"
+    ],
+    "listBoolKey" : [
+        true,
+        true,
+        false
+    ],
+    "listIntKey": [
+        0,
+        1,
+        2,
+        4,
+        6,
+        8,
+        1.0
+    ],
+    "listComplex": [
+        [
+            0.0,
+            0.1,
+            0.22
+        ],
+        {
+            "key0.0": "value0.0",
+            "key0.1": "value0.1"
+        },
+        2
+    ],
+    "stringKey": "stringValue",
+    "intKey": 100,
+    "boolKey": true,
+    "listObjKey": [
         {
             "key0.0": "value0.0",
             "key0.1": "value0.1"
@@ -16,8 +42,5 @@
             "key1.0": "value1.0",
             "key1.1": "value1.1"
         }
-    ],
-    "stringKey" : "stringValue",
-    "intKey": 100,
-    "boolKey": true
+    ]
 }

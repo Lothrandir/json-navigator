@@ -11,7 +11,9 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.commands.registerCommand('json-navigator.step-out', () => process(outOfNode)),
 		vscode.commands.registerCommand('json-navigator.step-in', () => process(intoNode)),
 		vscode.commands.registerCommand('json-navigator.step-next', () => process(nextNode)),
-		vscode.commands.registerCommand('json-navigator.step-previous', () => process(previousNode))
+		vscode.commands.registerCommand('json-navigator.step-previous', () => process(previousNode)),
+		vscode.commands.registerCommand('json-navigator.include-previous', () => process(includePreviousNode)),
+		vscode.commands.registerCommand('json-navigator.include-next', () => process2(includeNextNode))
 	];
 
 	disposables.forEach(e => {
@@ -29,6 +31,23 @@ export function process(command: (editor : vscode.TextEditor, currentNode: json.
 		return;
 	}
 	const node = getCurrentNode(editor);
+	if(node === undefined) {
+	
+		vscode.window.showErrorMessage('node is undefined');
+		return;
+	}
+	vscode.debug.activeDebugSession ? vscode.window.showWarningMessage(jsonNodeToString(node)) : "";
+	editor.selection = command(editor, node);
+	editor.revealRange(new vscode.Range(editor.selection.start, editor.selection.end));	
+}
+
+export function process2(command: (editor : vscode.TextEditor, currentNode: json.Node) => vscode.Selection) {
+	const editor = vscode.window.activeTextEditor;
+	if(editor === undefined) {
+		vscode.window.showErrorMessage('editor is undefined');
+		return;
+	}
+	const node = getCurrentNodeAtOffset(editor, editor.document.offsetAt(editor.selection.end) - 1);
 	if(node === undefined) {
 	
 		vscode.window.showErrorMessage('node is undefined');
@@ -72,7 +91,44 @@ export function nextNode(editor : vscode.TextEditor, currentNode: json.Node) : v
 		const currentIndex = currentNode.parent.children!.indexOf(currentNode);
 		if(currentIndex <  currentNode.parent.children!.length - 1)
 		{
-			return getSelectionOfNode(editor, currentNode.parent.children![currentIndex + 1]); 
+			return getSelectionOfNode(editor, currentNode.parent.children![currentIndex + 1]);
+		}
+	}
+
+	return editor.selection;
+}
+
+export function includeNextNode(editor : vscode.TextEditor, currentNode: json.Node) : vscode.Selection {
+	if(currentNode.parent === undefined)
+	{
+		return getSelectionOfNode(editor, currentNode); 
+	}
+
+	if(currentNode.parent.type === 'property')
+	{
+		const currentIndex = currentNode.parent.parent!.children!.indexOf(currentNode.parent) ;
+		if(currentIndex <  currentNode.parent.parent!.children!.length - 1)
+		{
+			//return getSelectionOfNode(editor, currentNode.parent.parent!.children![currentIndex + 1]);
+			return new vscode.Selection(getNodeEnd(editor, currentNode.parent.parent!.children![currentIndex + 1]), editor.selection.start);
+		}
+		else
+		{
+			return new vscode.Selection(getNodeEnd(editor, currentNode.parent.parent!.children![currentIndex]), editor.selection.start);
+		}
+	}
+
+	if(currentNode.parent.type === 'object' || currentNode.parent.type === 'array')
+	{
+		const currentIndex = currentNode.parent.children!.indexOf(currentNode);
+		if(currentIndex <  currentNode.parent.children!.length - 1)
+		{
+			return new vscode.Selection(getNodeEnd(editor, currentNode.parent.children![currentIndex + 1]), editor.selection.start);
+			//return getSelectionOfNode(editor, currentNode.parent.children![currentIndex + 1]); 
+		}
+		else
+		{
+			return new vscode.Selection(getNodeEnd(editor, currentNode.parent.children![currentIndex]), editor.selection.start);
 		}
 	}
 
@@ -92,6 +148,10 @@ export function previousNode(editor : vscode.TextEditor, currentNode: json.Node)
 		{
 			return getSelectionOfNode(editor, currentNode.parent.parent!.children![currentIndex - 1]); 
 		}
+		else 
+		{
+			return getSelectionOfNode(editor, currentNode.parent.parent!.children![0]);
+		}
 	}
 
 	if(currentNode.parent.type === 'object' || currentNode.parent.type === 'array')
@@ -100,6 +160,43 @@ export function previousNode(editor : vscode.TextEditor, currentNode: json.Node)
 		if(currentIndex > 0)
 		{
 			return getSelectionOfNode(editor, currentNode.parent.children![currentIndex - 1]); 
+		}
+	}
+
+	return getSelectionOfNode(editor, currentNode);
+}
+
+export function includePreviousNode(editor : vscode.TextEditor, currentNode: json.Node) : vscode.Selection {
+	if(currentNode.parent === undefined)
+	{
+		return getSelectionOfNode(editor, currentNode); 
+	}
+
+	if(currentNode.parent.type === 'property')
+	{
+		const currentIndex = currentNode.parent.parent!.children!.indexOf(currentNode.parent) ;
+		if(currentIndex > 0)
+		{
+			return new vscode.Selection(editor.selection.end, getNodeStart(editor, currentNode.parent.parent!.children![currentIndex - 1]));
+			//return getSelectionOfNode(editor, currentNode.parent.parent!.children![currentIndex - 1]); 
+		}
+		else
+		{
+			return new vscode.Selection(editor.selection.end, getNodeStart(editor, currentNode.parent.parent!.children![0]));
+		}
+	}
+
+	if(currentNode.parent.type === 'object' || currentNode.parent.type === 'array')
+	{
+		const currentIndex = currentNode.parent.children!.indexOf(currentNode);
+		if(currentIndex > 0)
+		{
+			return new vscode.Selection(editor.selection.end, getNodeStart(editor, currentNode.parent.children![currentIndex - 1]));
+			//return getSelectionOfNode(editor, currentNode.parent.children![currentIndex - 1]); 
+		}
+		else
+		{
+			return new vscode.Selection(editor.selection.end, getNodeStart(editor, currentNode.parent.children![0]));
 		}
 	}
 
@@ -204,21 +301,32 @@ export function intoNode(editor : vscode.TextEditor, currentNode: json.Node) : v
 
 export function getSelectionOfNode(editor : vscode.TextEditor, node: json.Node) : vscode.Selection
 {
-	const nodeStart = editor.document.positionAt(node.offset);
-	const nodeEnd = editor.document.positionAt(node.offset + node.length);
-	return new vscode.Selection(nodeEnd, nodeStart);
+	return new vscode.Selection(getNodeEnd(editor, node), getNodeStart(editor, node));
 }
 
+export function getNodeStart(editor : vscode.TextEditor, node: json.Node) : vscode.Position
+{
+	return editor.document.positionAt(node.offset);
+}
+
+export function getNodeEnd(editor : vscode.TextEditor, node: json.Node) : vscode.Position
+{
+	return editor.document.positionAt(node.offset + node.length);
+}
 
 export function getCurrentNode(editor : vscode.TextEditor) {
+	const position = editor.selection.active;
+	return getCurrentNodeAtOffset(editor, editor.document.offsetAt(position));
+}
+
+export function getCurrentNodeAtOffset(editor : vscode.TextEditor, offset : number) {
 	const text = editor.document.getText();
 	const tree = json.parseTree(text);
 	if(tree === undefined) {
 		vscode.window.showErrorMessage('tree is undefined');
 		return;
 	}
-	const position = editor.selection.active;
-	const offset = editor.document.offsetAt(position);
+	
 	let node = json.findNodeAtOffset(tree, offset);
 	
 	return node;

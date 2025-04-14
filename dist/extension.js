@@ -1,1 +1,2254 @@
-(()=>{"use strict";var e={211:(e,t,n)=>{function r(e,t=!1){const n=e.length;let r=0,c="",s=0,f=16,l=0,u=0,d=0,p=0,h=0;function g(t,n){let o=0,a=0;for(;o<t||!n;){let t=e.charCodeAt(r);if(t>=48&&t<=57)a=16*a+t-48;else if(t>=65&&t<=70)a=16*a+t-65+10;else{if(!(t>=97&&t<=102))break;a=16*a+t-97+10}r++,o++}return o<t&&(a=-1),a}function y(){if(c="",h=0,s=r,u=l,p=d,r>=n)return s=n,f=17;let t=e.charCodeAt(r);if(o(t)){do{r++,c+=String.fromCharCode(t),t=e.charCodeAt(r)}while(o(t));return f=15}if(a(t))return r++,c+=String.fromCharCode(t),13===t&&10===e.charCodeAt(r)&&(r++,c+="\n"),l++,d=r,f=14;switch(t){case 123:return r++,f=1;case 125:return r++,f=2;case 91:return r++,f=3;case 93:return r++,f=4;case 58:return r++,f=6;case 44:return r++,f=5;case 34:return r++,c=function(){let t="",o=r;for(;;){if(r>=n){t+=e.substring(o,r),h=2;break}const i=e.charCodeAt(r);if(34===i){t+=e.substring(o,r),r++;break}if(92!==i){if(i>=0&&i<=31){if(a(i)){t+=e.substring(o,r),h=2;break}h=6}r++}else{if(t+=e.substring(o,r),r++,r>=n){h=2;break}switch(e.charCodeAt(r++)){case 34:t+='"';break;case 92:t+="\\";break;case 47:t+="/";break;case 98:t+="\b";break;case 102:t+="\f";break;case 110:t+="\n";break;case 114:t+="\r";break;case 116:t+="\t";break;case 117:const e=g(4,!0);e>=0?t+=String.fromCharCode(e):h=4;break;default:h=5}o=r}}return t}(),f=10;case 47:const o=r-1;if(47===e.charCodeAt(r+1)){for(r+=2;r<n&&!a(e.charCodeAt(r));)r++;return c=e.substring(o,r),f=12}if(42===e.charCodeAt(r+1)){r+=2;const t=n-1;let i=!1;for(;r<t;){const t=e.charCodeAt(r);if(42===t&&47===e.charCodeAt(r+1)){r+=2,i=!0;break}r++,a(t)&&(13===t&&10===e.charCodeAt(r)&&r++,l++,d=r)}return i||(r++,h=1),c=e.substring(o,r),f=13}return c+=String.fromCharCode(t),r++,f=16;case 45:if(c+=String.fromCharCode(t),r++,r===n||!i(e.charCodeAt(r)))return f=16;case 48:case 49:case 50:case 51:case 52:case 53:case 54:case 55:case 56:case 57:return c+=function(){let t=r;if(48===e.charCodeAt(r))r++;else for(r++;r<e.length&&i(e.charCodeAt(r));)r++;if(r<e.length&&46===e.charCodeAt(r)){if(r++,!(r<e.length&&i(e.charCodeAt(r))))return h=3,e.substring(t,r);for(r++;r<e.length&&i(e.charCodeAt(r));)r++}let n=r;if(r<e.length&&(69===e.charCodeAt(r)||101===e.charCodeAt(r)))if(r++,(r<e.length&&43===e.charCodeAt(r)||45===e.charCodeAt(r))&&r++,r<e.length&&i(e.charCodeAt(r))){for(r++;r<e.length&&i(e.charCodeAt(r));)r++;n=r}else h=3;return e.substring(t,n)}(),f=11;default:for(;r<n&&k(t);)r++,t=e.charCodeAt(r);if(s!==r){switch(c=e.substring(s,r),c){case"true":return f=8;case"false":return f=9;case"null":return f=7}return f=16}return c+=String.fromCharCode(t),r++,f=16}}function k(e){if(o(e)||a(e))return!1;switch(e){case 125:case 93:case 123:case 91:case 34:case 58:case 44:case 47:return!1}return!0}return{setPosition:function(e){r=e,c="",s=0,f=16,h=0},getPosition:()=>r,scan:t?function(){let e;do{e=y()}while(e>=12&&e<=15);return e}:y,getToken:()=>f,getTokenValue:()=>c,getTokenOffset:()=>s,getTokenLength:()=>r-s,getTokenStartLine:()=>u,getTokenStartCharacter:()=>s-p,getTokenError:()=>h}}function o(e){return 32===e||9===e}function a(e){return 10===e||13===e}function i(e){return e>=48&&e<=57}var c;n.r(t),n.d(t,{ParseErrorCode:()=>_,ScanError:()=>T,SyntaxKind:()=>O,applyEdits:()=>M,createScanner:()=>w,findNodeAtLocation:()=>S,findNodeAtOffset:()=>L,format:()=>U,getLocation:()=>E,getNodePath:()=>N,getNodeValue:()=>j,modify:()=>F,parse:()=>A,parseTree:()=>x,printParseErrorCode:()=>P,stripComments:()=>I,visit:()=>B}),function(e){e[e.lineFeed=10]="lineFeed",e[e.carriageReturn=13]="carriageReturn",e[e.space=32]="space",e[e._0=48]="_0",e[e._1=49]="_1",e[e._2=50]="_2",e[e._3=51]="_3",e[e._4=52]="_4",e[e._5=53]="_5",e[e._6=54]="_6",e[e._7=55]="_7",e[e._8=56]="_8",e[e._9=57]="_9",e[e.a=97]="a",e[e.b=98]="b",e[e.c=99]="c",e[e.d=100]="d",e[e.e=101]="e",e[e.f=102]="f",e[e.g=103]="g",e[e.h=104]="h",e[e.i=105]="i",e[e.j=106]="j",e[e.k=107]="k",e[e.l=108]="l",e[e.m=109]="m",e[e.n=110]="n",e[e.o=111]="o",e[e.p=112]="p",e[e.q=113]="q",e[e.r=114]="r",e[e.s=115]="s",e[e.t=116]="t",e[e.u=117]="u",e[e.v=118]="v",e[e.w=119]="w",e[e.x=120]="x",e[e.y=121]="y",e[e.z=122]="z",e[e.A=65]="A",e[e.B=66]="B",e[e.C=67]="C",e[e.D=68]="D",e[e.E=69]="E",e[e.F=70]="F",e[e.G=71]="G",e[e.H=72]="H",e[e.I=73]="I",e[e.J=74]="J",e[e.K=75]="K",e[e.L=76]="L",e[e.M=77]="M",e[e.N=78]="N",e[e.O=79]="O",e[e.P=80]="P",e[e.Q=81]="Q",e[e.R=82]="R",e[e.S=83]="S",e[e.T=84]="T",e[e.U=85]="U",e[e.V=86]="V",e[e.W=87]="W",e[e.X=88]="X",e[e.Y=89]="Y",e[e.Z=90]="Z",e[e.asterisk=42]="asterisk",e[e.backslash=92]="backslash",e[e.closeBrace=125]="closeBrace",e[e.closeBracket=93]="closeBracket",e[e.colon=58]="colon",e[e.comma=44]="comma",e[e.dot=46]="dot",e[e.doubleQuote=34]="doubleQuote",e[e.minus=45]="minus",e[e.openBrace=123]="openBrace",e[e.openBracket=91]="openBracket",e[e.plus=43]="plus",e[e.slash=47]="slash",e[e.formFeed=12]="formFeed",e[e.tab=9]="tab"}(c||(c={}));const s=new Array(20).fill(0).map(((e,t)=>" ".repeat(t))),f=200,l={" ":{"\n":new Array(f).fill(0).map(((e,t)=>"\n"+" ".repeat(t))),"\r":new Array(f).fill(0).map(((e,t)=>"\r"+" ".repeat(t))),"\r\n":new Array(f).fill(0).map(((e,t)=>"\r\n"+" ".repeat(t)))},"\t":{"\n":new Array(f).fill(0).map(((e,t)=>"\n"+"\t".repeat(t))),"\r":new Array(f).fill(0).map(((e,t)=>"\r"+"\t".repeat(t))),"\r\n":new Array(f).fill(0).map(((e,t)=>"\r\n"+"\t".repeat(t)))}},u=["\n","\r","\r\n"];function d(e,t,n){let o,a,i,c,f;if(t){for(c=t.offset,f=c+t.length,i=c;i>0&&!h(e,i-1);)i--;let r=f;for(;r<e.length&&!h(e,r);)r++;a=e.substring(i,r),o=function(e,t){let n=0,r=0;const o=t.tabSize||4;for(;n<e.length;){let t=e.charAt(n);if(t===s[1])r++;else{if("\t"!==t)break;r+=o}n++}return Math.floor(r/o)}(a,n)}else a=e,o=0,i=0,c=0,f=e.length;const d=function(e,t){for(let e=0;e<t.length;e++){const n=t.charAt(e);if("\r"===n)return e+1<t.length&&"\n"===t.charAt(e+1)?"\r\n":"\r";if("\n"===n)return"\n"}return e&&e.eol||"\n"}(n,e),g=u.includes(d);let y,k=0,m=0;y=n.insertSpaces?s[n.tabSize||4]??p(s[1],n.tabSize||4):"\t";const b="\t"===y?"\t":" ";let v=r(a,!1),C=!1;function w(){if(k>1)return p(d,k)+p(y,o+m);const e=y.length*(o+m);return!g||e>l[b][d].length?d+p(y,o+m):e<=0?d:l[b][d][e]}function T(){let e=v.scan();for(k=0;15===e||14===e;)14===e&&n.keepLines?k+=1:14===e&&(k=1),e=v.scan();return C=16===e||0!==v.getTokenError(),e}const O=[];function E(n,r,o){C||t&&!(r<f&&o>c)||e.substring(r,o)===n||O.push({offset:r,length:o-r,content:n})}let A=T();if(n.keepLines&&k>0&&E(p(d,k),0,0),17!==A){let e=v.getTokenOffset()+i;E(y.length*o<20&&n.insertSpaces?s[y.length*o]:p(y,o),i,e)}for(;17!==A;){let e=v.getTokenOffset()+v.getTokenLength()+i,t=T(),r="",o=!1;for(;0===k&&(12===t||13===t);){let n=v.getTokenOffset()+i;E(s[1],e,n),e=v.getTokenOffset()+v.getTokenLength()+i,o=12===t,r=o?w():"",t=T()}if(2===t)1!==A&&m--,n.keepLines&&k>0||!n.keepLines&&1!==A?r=w():n.keepLines&&(r=s[1]);else if(4===t)3!==A&&m--,n.keepLines&&k>0||!n.keepLines&&3!==A?r=w():n.keepLines&&(r=s[1]);else{switch(A){case 3:case 1:m++,r=n.keepLines&&k>0||!n.keepLines?w():s[1];break;case 5:r=n.keepLines&&k>0||!n.keepLines?w():s[1];break;case 12:r=w();break;case 13:k>0?r=w():o||(r=s[1]);break;case 6:n.keepLines&&k>0?r=w():o||(r=s[1]);break;case 10:n.keepLines&&k>0?r=w():6!==t||o||(r="");break;case 7:case 8:case 9:case 11:case 2:case 4:n.keepLines&&k>0?r=w():12!==t&&13!==t||o?5!==t&&17!==t&&(C=!0):r=s[1];break;case 16:C=!0}k>0&&(12===t||13===t)&&(r=w())}17===t&&(r=n.keepLines&&k>0?w():n.insertFinalNewline?d:""),E(r,e,v.getTokenOffset()+i),A=t}return O}function p(e,t){let n="";for(let r=0;r<t;r++)n+=e;return n}function h(e,t){return-1!=="\r\n".indexOf(e.charAt(t))}var g;function y(e,t=[],n=g.DEFAULT){let r={type:"array",offset:-1,length:-1,children:[],parent:void 0};function o(e){"property"===r.type&&(r.length=e-r.offset,r=r.parent)}function a(e){return r.children.push(e),e}m(e,{onObjectBegin:e=>{r=a({type:"object",offset:e,length:-1,parent:r,children:[]})},onObjectProperty:(e,t,n)=>{r=a({type:"property",offset:t,length:-1,parent:r,children:[]}),r.children.push({type:"string",value:e,offset:t,length:n,parent:r})},onObjectEnd:(e,t)=>{o(e+t),r.length=e+t-r.offset,r=r.parent,o(e+t)},onArrayBegin:(e,t)=>{r=a({type:"array",offset:e,length:-1,parent:r,children:[]})},onArrayEnd:(e,t)=>{r.length=e+t-r.offset,r=r.parent,o(e+t)},onLiteralValue:(e,t,n)=>{a({type:b(e),offset:t,length:n,parent:r,value:e}),o(t+n)},onSeparator:(e,t,n)=>{"property"===r.type&&(":"===e?r.colonOffset=t:","===e&&o(t))},onError:(e,n,r)=>{t.push({error:e,offset:n,length:r})}},n);const i=r.children[0];return i&&delete i.parent,i}function k(e,t){if(!e)return;let n=e;for(let e of t)if("string"==typeof e){if("object"!==n.type||!Array.isArray(n.children))return;let t=!1;for(const r of n.children)if(Array.isArray(r.children)&&r.children[0].value===e&&2===r.children.length){n=r.children[1],t=!0;break}if(!t)return}else{const t=e;if("array"!==n.type||t<0||!Array.isArray(n.children)||t>=n.children.length)return;n=n.children[t]}return n}function m(e,t,n=g.DEFAULT){const o=r(e,!1),a=[];let i=0;function c(e){return e?t=>0===i&&e(t,o.getTokenOffset(),o.getTokenLength(),o.getTokenStartLine(),o.getTokenStartCharacter()):()=>!0}function s(e){return e?t=>0===i&&e(t,o.getTokenOffset(),o.getTokenLength(),o.getTokenStartLine(),o.getTokenStartCharacter(),(()=>a.slice())):()=>!0}function f(e){return e?()=>{i>0?i++:!1===e(o.getTokenOffset(),o.getTokenLength(),o.getTokenStartLine(),o.getTokenStartCharacter(),(()=>a.slice()))&&(i=1)}:()=>!0}function l(e){return e?()=>{i>0&&i--,0===i&&e(o.getTokenOffset(),o.getTokenLength(),o.getTokenStartLine(),o.getTokenStartCharacter())}:()=>!0}const u=f(t.onObjectBegin),d=s(t.onObjectProperty),p=l(t.onObjectEnd),h=f(t.onArrayBegin),y=l(t.onArrayEnd),k=s(t.onLiteralValue),m=c(t.onSeparator),b=(C=t.onComment)?()=>0===i&&C(o.getTokenOffset(),o.getTokenLength(),o.getTokenStartLine(),o.getTokenStartCharacter()):()=>!0,v=c(t.onError);var C;const w=n&&n.disallowComments,T=n&&n.allowTrailingComma;function O(){for(;;){const e=o.scan();switch(o.getTokenError()){case 4:E(14);break;case 5:E(15);break;case 3:E(13);break;case 1:w||E(11);break;case 2:E(12);break;case 6:E(16)}switch(e){case 12:case 13:w?E(10):b();break;case 16:E(1);break;case 15:case 14:break;default:return e}}}function E(e,t=[],n=[]){if(v(e),t.length+n.length>0){let e=o.getToken();for(;17!==e;){if(-1!==t.indexOf(e)){O();break}if(-1!==n.indexOf(e))break;e=O()}}}function A(e){const t=o.getTokenValue();return e?k(t):(d(t),a.push(t)),O(),!0}return O(),17===o.getToken()?!!n.allowEmptyContent||(E(4,[],[]),!1):function e(){switch(o.getToken()){case 3:return function(){h(),O();let t=!0,n=!1;for(;4!==o.getToken()&&17!==o.getToken();){if(5===o.getToken()){if(n||E(4,[],[]),m(","),O(),4===o.getToken()&&T)break}else n&&E(6,[],[]);t?(a.push(0),t=!1):a[a.length-1]++,e()||E(4,[],[4,5]),n=!0}return y(),t||a.pop(),4!==o.getToken()?E(8,[4],[]):O(),!0}();case 1:return function(){u(),O();let t=!1;for(;2!==o.getToken()&&17!==o.getToken();){if(5===o.getToken()){if(t||E(4,[],[]),m(","),O(),2===o.getToken()&&T)break}else t&&E(6,[],[]);(10!==o.getToken()?(E(3,[],[2,5]),0):(A(!1),6===o.getToken()?(m(":"),O(),e()||E(4,[],[2,5])):E(5,[],[2,5]),a.pop(),1))||E(4,[],[2,5]),t=!0}return p(),2!==o.getToken()?E(7,[2],[]):O(),!0}();case 10:return A(!0);default:return function(){switch(o.getToken()){case 11:const e=o.getTokenValue();let t=Number(e);isNaN(t)&&(E(2),t=0),k(t);break;case 7:k(null);break;case 8:k(!0);break;case 9:k(!1);break;default:return!1}return O(),!0}()}}()?(17!==o.getToken()&&E(9,[],[]),!0):(E(4,[],[]),!1)}function b(e){switch(typeof e){case"boolean":return"boolean";case"number":return"number";case"string":return"string";case"object":return e?Array.isArray(e)?"array":"object":"null";default:return"null"}}function v(e,t,n){if(!n.formattingOptions)return[t];let r=C(e,t),o=t.offset,a=t.offset+t.content.length;if(0===t.length||0===t.content.length){for(;o>0&&!h(r,o-1);)o--;for(;a<r.length&&!h(r,a);)a++}const i=d(r,{offset:o,length:a-o},{...n.formattingOptions,keepLines:!1});for(let e=i.length-1;e>=0;e--){const t=i[e];r=C(r,t),o=Math.min(o,t.offset),a=Math.max(a,t.offset+t.length),a+=t.content.length-t.length}return[{offset:o,length:e.length-(r.length-a)-o,content:r.substring(o,a)}]}function C(e,t){return e.substring(0,t.offset)+t.content+e.substring(t.offset+t.length)}!function(e){e.DEFAULT={allowTrailingComma:!1}}(g||(g={}));const w=r;var T,O;!function(e){e[e.None=0]="None",e[e.UnexpectedEndOfComment=1]="UnexpectedEndOfComment",e[e.UnexpectedEndOfString=2]="UnexpectedEndOfString",e[e.UnexpectedEndOfNumber=3]="UnexpectedEndOfNumber",e[e.InvalidUnicode=4]="InvalidUnicode",e[e.InvalidEscapeCharacter=5]="InvalidEscapeCharacter",e[e.InvalidCharacter=6]="InvalidCharacter"}(T||(T={})),function(e){e[e.OpenBraceToken=1]="OpenBraceToken",e[e.CloseBraceToken=2]="CloseBraceToken",e[e.OpenBracketToken=3]="OpenBracketToken",e[e.CloseBracketToken=4]="CloseBracketToken",e[e.CommaToken=5]="CommaToken",e[e.ColonToken=6]="ColonToken",e[e.NullKeyword=7]="NullKeyword",e[e.TrueKeyword=8]="TrueKeyword",e[e.FalseKeyword=9]="FalseKeyword",e[e.StringLiteral=10]="StringLiteral",e[e.NumericLiteral=11]="NumericLiteral",e[e.LineCommentTrivia=12]="LineCommentTrivia",e[e.BlockCommentTrivia=13]="BlockCommentTrivia",e[e.LineBreakTrivia=14]="LineBreakTrivia",e[e.Trivia=15]="Trivia",e[e.Unknown=16]="Unknown",e[e.EOF=17]="EOF"}(O||(O={}));const E=function(e,t){const n=[],r=new Object;let o;const a={value:{},offset:0,length:0,type:"object",parent:void 0};let i=!1;function c(e,t,n,r){a.value=e,a.offset=t,a.length=n,a.type=r,a.colonOffset=void 0,o=a}try{m(e,{onObjectBegin:(e,a)=>{if(t<=e)throw r;o=void 0,i=t>e,n.push("")},onObjectProperty:(e,o,a)=>{if(t<o)throw r;if(c(e,o,a,"property"),n[n.length-1]=e,t<=o+a)throw r},onObjectEnd:(e,a)=>{if(t<=e)throw r;o=void 0,n.pop()},onArrayBegin:(e,a)=>{if(t<=e)throw r;o=void 0,n.push(0)},onArrayEnd:(e,a)=>{if(t<=e)throw r;o=void 0,n.pop()},onLiteralValue:(e,n,o)=>{if(t<n)throw r;if(c(e,n,o,b(e)),t<=n+o)throw r},onSeparator:(e,a,c)=>{if(t<=a)throw r;if(":"===e&&o&&"property"===o.type)o.colonOffset=a,i=!1,o=void 0;else if(","===e){const e=n[n.length-1];"number"==typeof e?n[n.length-1]=e+1:(i=!0,n[n.length-1]=""),o=void 0}}})}catch(e){if(e!==r)throw e}return{path:n,previousNode:o,isAtPropertyKey:i,matches:e=>{let t=0;for(let r=0;t<e.length&&r<n.length;r++)if(e[t]===n[r]||"*"===e[t])t++;else if("**"!==e[t])return!1;return t===e.length}}},A=function(e,t=[],n=g.DEFAULT){let r=null,o=[];const a=[];function i(e){Array.isArray(o)?o.push(e):null!==r&&(o[r]=e)}return m(e,{onObjectBegin:()=>{const e={};i(e),a.push(o),o=e,r=null},onObjectProperty:e=>{r=e},onObjectEnd:()=>{o=a.pop()},onArrayBegin:()=>{const e=[];i(e),a.push(o),o=e,r=null},onArrayEnd:()=>{o=a.pop()},onLiteralValue:i,onError:(e,n,r)=>{t.push({error:e,offset:n,length:r})}},n),o[0]},x=y,S=k,L=function e(t,n,r=!1){if(function(e,t,n=!1){return t>=e.offset&&t<e.offset+e.length||n&&t===e.offset+e.length}(t,n,r)){const o=t.children;if(Array.isArray(o))for(let t=0;t<o.length&&o[t].offset<=n;t++){const a=e(o[t],n,r);if(a)return a}return t}},N=function e(t){if(!t.parent||!t.parent.children)return[];const n=e(t.parent);if("property"===t.parent.type){const e=t.parent.children[0].value;n.push(e)}else if("array"===t.parent.type){const e=t.parent.children.indexOf(t);-1!==e&&n.push(e)}return n},j=function e(t){switch(t.type){case"array":return t.children.map(e);case"object":const n=Object.create(null);for(let r of t.children){const t=r.children[1];t&&(n[r.children[0].value]=e(t))}return n;case"null":case"string":case"number":case"boolean":return t.value;default:return}},B=m,I=function(e,t){let n,o,a=r(e),i=[],c=0;do{switch(o=a.getPosition(),n=a.scan(),n){case 12:case 13:case 17:c!==o&&i.push(e.substring(c,o)),void 0!==t&&i.push(a.getTokenValue().replace(/[^\r\n]/g,t)),c=a.getPosition()}}while(17!==n);return i.join("")};var _;function P(e){switch(e){case 1:return"InvalidSymbol";case 2:return"InvalidNumberFormat";case 3:return"PropertyNameExpected";case 4:return"ValueExpected";case 5:return"ColonExpected";case 6:return"CommaExpected";case 7:return"CloseBraceExpected";case 8:return"CloseBracketExpected";case 9:return"EndOfFileExpected";case 10:return"InvalidCommentToken";case 11:return"UnexpectedEndOfComment";case 12:return"UnexpectedEndOfString";case 13:return"UnexpectedEndOfNumber";case 14:return"InvalidUnicode";case 15:return"InvalidEscapeCharacter";case 16:return"InvalidCharacter"}return"<unknown ParseErrorCode>"}function U(e,t,n){return d(e,t,n)}function F(e,t,n,r){return function(e,t,n,r){const o=t.slice(),a=y(e,[]);let i,c;for(;o.length>0&&(c=o.pop(),i=k(a,o),void 0===i&&void 0!==n);)n="string"==typeof c?{[c]:n}:[n];if(i){if("object"===i.type&&"string"==typeof c&&Array.isArray(i.children)){const t=k(i,[c]);if(void 0!==t){if(void 0===n){if(!t.parent)throw new Error("Malformed AST");const n=i.children.indexOf(t.parent);let o,a=t.parent.offset+t.parent.length;if(n>0){let e=i.children[n-1];o=e.offset+e.length}else o=i.offset+1,i.children.length>1&&(a=i.children[1].offset);return v(e,{offset:o,length:a-o,content:""},r)}return v(e,{offset:t.offset,length:t.length,content:JSON.stringify(n)},r)}{if(void 0===n)return[];const t=`${JSON.stringify(c)}: ${JSON.stringify(n)}`,o=r.getInsertionIndex?r.getInsertionIndex(i.children.map((e=>e.children[0].value))):i.children.length;let a;if(o>0){let e=i.children[o-1];a={offset:e.offset+e.length,length:0,content:","+t}}else a=0===i.children.length?{offset:i.offset+1,length:0,content:t}:{offset:i.offset+1,length:0,content:t+","};return v(e,a,r)}}if("array"===i.type&&"number"==typeof c&&Array.isArray(i.children)){const t=c;if(-1===t){const t=`${JSON.stringify(n)}`;let o;if(0===i.children.length)o={offset:i.offset+1,length:0,content:t};else{const e=i.children[i.children.length-1];o={offset:e.offset+e.length,length:0,content:","+t}}return v(e,o,r)}if(void 0===n&&i.children.length>=0){const t=c,n=i.children[t];let o;if(1===i.children.length)o={offset:i.offset+1,length:i.length-2,content:""};else if(i.children.length-1===t){let e=i.children[t-1],n=e.offset+e.length;o={offset:n,length:i.offset+i.length-2-n,content:""}}else o={offset:n.offset,length:i.children[t+1].offset-n.offset,content:""};return v(e,o,r)}if(void 0!==n){let t;const o=`${JSON.stringify(n)}`;if(!r.isArrayInsertion&&i.children.length>c){const e=i.children[c];t={offset:e.offset,length:e.length,content:o}}else if(0===i.children.length||0===c)t={offset:i.offset+1,length:0,content:0===i.children.length?o:o+","};else{const e=c>i.children.length?i.children.length:c,n=i.children[e-1];t={offset:n.offset+n.length,length:0,content:","+o}}return v(e,t,r)}throw new Error(`Can not ${void 0===n?"remove":r.isArrayInsertion?"insert":"modify"} Array index ${t} as length is not sufficient`)}throw new Error(`Can not add ${"number"!=typeof c?"index":"property"} to parent of type ${i.type}`)}if(void 0===n)throw new Error("Can not delete in empty document");return v(e,{offset:a?a.offset:0,length:a?a.length:0,content:JSON.stringify(n)},r)}(e,t,n,r)}function M(e,t){let n=t.slice(0).sort(((e,t)=>{const n=e.offset-t.offset;return 0===n?e.length-t.length:n})),r=e.length;for(let t=n.length-1;t>=0;t--){let o=n[t];if(!(o.offset+o.length<=r))throw new Error("Overlapping edit");e=C(e,o),r=o.offset}return e}!function(e){e[e.InvalidSymbol=1]="InvalidSymbol",e[e.InvalidNumberFormat=2]="InvalidNumberFormat",e[e.PropertyNameExpected=3]="PropertyNameExpected",e[e.ValueExpected=4]="ValueExpected",e[e.ColonExpected=5]="ColonExpected",e[e.CommaExpected=6]="CommaExpected",e[e.CloseBraceExpected=7]="CloseBraceExpected",e[e.CloseBracketExpected=8]="CloseBracketExpected",e[e.EndOfFileExpected=9]="EndOfFileExpected",e[e.InvalidCommentToken=10]="InvalidCommentToken",e[e.UnexpectedEndOfComment=11]="UnexpectedEndOfComment",e[e.UnexpectedEndOfString=12]="UnexpectedEndOfString",e[e.UnexpectedEndOfNumber=13]="UnexpectedEndOfNumber",e[e.InvalidUnicode=14]="InvalidUnicode",e[e.InvalidEscapeCharacter=15]="InvalidEscapeCharacter",e[e.InvalidCharacter=16]="InvalidCharacter"}(_||(_={}))},265:function(e,t,n){var r,o=this&&this.__createBinding||(Object.create?function(e,t,n,r){void 0===r&&(r=n);var o=Object.getOwnPropertyDescriptor(t,n);o&&!("get"in o?!t.__esModule:o.writable||o.configurable)||(o={enumerable:!0,get:function(){return t[n]}}),Object.defineProperty(e,r,o)}:function(e,t,n,r){void 0===r&&(r=n),e[r]=t[n]}),a=this&&this.__setModuleDefault||(Object.create?function(e,t){Object.defineProperty(e,"default",{enumerable:!0,value:t})}:function(e,t){e.default=t}),i=this&&this.__importStar||(r=function(e){return r=Object.getOwnPropertyNames||function(e){var t=[];for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[t.length]=n);return t},r(e)},function(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n=r(e),i=0;i<n.length;i++)"default"!==n[i]&&o(t,e,n[i]);return a(t,e),t});Object.defineProperty(t,"__esModule",{value:!0}),t.activate=function(e){[c.commands.registerCommand("json-navigator.step-out",(()=>f(p))),c.commands.registerCommand("json-navigator.step-in",(()=>f(h))),c.commands.registerCommand("json-navigator.step-next",(()=>f(u))),c.commands.registerCommand("json-navigator.step-previous",(()=>f(d)))].forEach((t=>{e.subscriptions.push(t)}))},t.deactivate=function(){},t.process=f,t.jsonNodeToString=l,t.nextNode=u,t.previousNode=d,t.outOfNode=p,t.intoNode=h,t.getSelectionOfNode=g,t.getCurrentNode=y;const c=i(n(398)),s=i(n(211));function f(e){const t=c.window.activeTextEditor;if(void 0===t)return void c.window.showErrorMessage("editor is undefined");const n=y(t);void 0!==n?(c.debug.activeDebugSession&&c.window.showWarningMessage(l(n)),t.selection=e(t,n),t.revealRange(new c.Range(t.selection.start,t.selection.end))):c.window.showErrorMessage("node is undefined")}function l(e){return JSON.stringify({offset:e.offset,value:e.value,type:e.type,parentType:e.parent?.type??"",parentOffset:e.parent?.offset??"",children:e.children?.map((t=>({type:e.type,offset:e.offset})))??""})}function u(e,t){if(void 0===t.parent)return g(e,t);if("property"===t.parent.type){const n=t.parent.parent.children.indexOf(t.parent);if(n<t.parent.parent.children.length-1)return g(e,t.parent.parent.children[n+1])}if("object"===t.parent.type||"array"===t.parent.type){const n=t.parent.children.indexOf(t);if(n<t.parent.children.length-1)return g(e,t.parent.children[n+1])}return g(e,t)}function d(e,t){if(void 0===t.parent)return g(e,t);if("property"===t.parent.type){const n=t.parent.parent.children.indexOf(t.parent);if(n>0)return g(e,t.parent.parent.children[n-1])}if("object"===t.parent.type||"array"===t.parent.type){const n=t.parent.children.indexOf(t);if(n>0)return g(e,t.parent.children[n-1])}return g(e,t)}function p(e,t){switch(t.type){case"property":return g(e,t.parent??t);case"string":return void 0===t.parent?(c.window.showInformationMessage("No parent!?!?!?!?!?!"),g(e,t)):"property"===t.parent.type&&t.parent.children?.[0]===t?g(e,t.parent?.parent??t):g(e,t.parent);case"boolean":case"number":return void 0===t.parent?(c.window.showInformationMessage("No parent!?!?!?!?!?!"),g(e,t)):g(e,t.parent);case"array":case"object":return void 0===t.parent?g(e,t):g(e,t.parent);default:return c.window.showErrorMessage("Not implementer yet.... \n"+l(t)),g(e,t)}}function h(e,t){switch(t.type){case"property":return g(e,t.children?.[1]??t);case"string":return void 0===t.parent?(c.window.showInformationMessage("No parent!?!?!?!?!?!"),g(e,t)):"property"===t.parent.type&&t.parent.children?.[0]===t?g(e,t.parent.children?.[1]):g(e,t);case"boolean":case"number":return g(e,t);case"array":case"object":return void 0===t.children||t.children?.length<=0?g(e,t):g(e,t.children?.[0]);default:return c.window.showErrorMessage("Not implementer yet.... \n"+l(t)),g(e,t)}}function g(e,t){const n=e.document.positionAt(t.offset),r=e.document.positionAt(t.offset+t.length);return new c.Selection(r,n)}function y(e){const t=e.document.getText(),n=s.parseTree(t);if(void 0===n)return void c.window.showErrorMessage("tree is undefined");const r=e.selection.active,o=e.document.offsetAt(r);return s.findNodeAtOffset(n,o)}},398:e=>{e.exports=require("vscode")}},t={};function n(r){var o=t[r];if(void 0!==o)return o.exports;var a=t[r]={exports:{}};return e[r].call(a.exports,a,a.exports,n),a.exports}n.d=(e,t)=>{for(var r in t)n.o(t,r)&&!n.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:t[r]})},n.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t),n.r=e=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})};var r=n(265);module.exports=r})();
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ([
+/* 0 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || (function () {
+    var ownKeys = function(o) {
+        ownKeys = Object.getOwnPropertyNames || function (o) {
+            var ar = [];
+            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
+            return ar;
+        };
+        return ownKeys(o);
+    };
+    return function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
+        __setModuleDefault(result, mod);
+        return result;
+    };
+})();
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.activate = activate;
+exports.deactivate = deactivate;
+exports.process = process;
+exports.process2 = process2;
+exports.jsonNodeToString = jsonNodeToString;
+exports.nextNode = nextNode;
+exports.includeNextNode = includeNextNode;
+exports.previousNode = previousNode;
+exports.includePreviousNode = includePreviousNode;
+exports.outOfNode = outOfNode;
+exports.intoNode = intoNode;
+exports.getSelectionOfNode = getSelectionOfNode;
+exports.getNodeStart = getNodeStart;
+exports.getNodeEnd = getNodeEnd;
+exports.getCurrentNode = getCurrentNode;
+exports.getCurrentNodeAtOffset = getCurrentNodeAtOffset;
+// The module 'vscode' contains the VS Code extensibility API
+// Import the module and reference it with the alias vscode in your code below
+const vscode = __importStar(__webpack_require__(1));
+const json = __importStar(__webpack_require__(2));
+// This method is called when extension is activated
+// The extension is activated the very first time the command is executed
+function activate(context) {
+    const disposables = [
+        vscode.commands.registerCommand('json-navigator.step-out', () => process(outOfNode)),
+        vscode.commands.registerCommand('json-navigator.step-in', () => process(intoNode)),
+        vscode.commands.registerCommand('json-navigator.step-next', () => process(nextNode)),
+        vscode.commands.registerCommand('json-navigator.step-previous', () => process(previousNode)),
+        vscode.commands.registerCommand('json-navigator.include-previous', () => process(includePreviousNode)),
+        vscode.commands.registerCommand('json-navigator.include-next', () => process2(includeNextNode))
+    ];
+    disposables.forEach(e => {
+        context.subscriptions.push(e);
+    });
+}
+// This method is called when your extension is deactivated
+function deactivate() { }
+function process(command) {
+    const editor = vscode.window.activeTextEditor;
+    if (editor === undefined) {
+        vscode.window.showErrorMessage('editor is undefined');
+        return;
+    }
+    const node = getCurrentNode(editor);
+    if (node === undefined) {
+        vscode.window.showErrorMessage('node is undefined');
+        return;
+    }
+    vscode.debug.activeDebugSession ? vscode.window.showWarningMessage(jsonNodeToString(node)) : "";
+    editor.selection = command(editor, node);
+    editor.revealRange(new vscode.Range(editor.selection.start, editor.selection.end));
+}
+function process2(command) {
+    const editor = vscode.window.activeTextEditor;
+    if (editor === undefined) {
+        vscode.window.showErrorMessage('editor is undefined');
+        return;
+    }
+    const node = getCurrentNodeAtOffset(editor, editor.document.offsetAt(editor.selection.end) - 1);
+    if (node === undefined) {
+        vscode.window.showErrorMessage('node is undefined');
+        return;
+    }
+    vscode.debug.activeDebugSession ? vscode.window.showWarningMessage(jsonNodeToString(node)) : "";
+    editor.selection = command(editor, node);
+    editor.revealRange(new vscode.Range(editor.selection.start, editor.selection.end));
+}
+function jsonNodeToString(node) {
+    return JSON.stringify({
+        offset: node.offset,
+        value: node.value,
+        type: node.type,
+        parentType: node.parent?.type ?? "",
+        parentOffset: node.parent?.offset ?? "",
+        children: node.children?.map((n) => { return { type: node.type, offset: node.offset }; }) ?? ""
+    });
+}
+function nextNode(editor, currentNode) {
+    if (currentNode.parent === undefined) {
+        return getSelectionOfNode(editor, currentNode);
+    }
+    if (currentNode.parent.type === 'property') {
+        const currentIndex = currentNode.parent.parent.children.indexOf(currentNode.parent);
+        if (currentIndex < currentNode.parent.parent.children.length - 1) {
+            return getSelectionOfNode(editor, currentNode.parent.parent.children[currentIndex + 1]);
+        }
+    }
+    if (currentNode.parent.type === 'object' || currentNode.parent.type === 'array') {
+        const currentIndex = currentNode.parent.children.indexOf(currentNode);
+        if (currentIndex < currentNode.parent.children.length - 1) {
+            return getSelectionOfNode(editor, currentNode.parent.children[currentIndex + 1]);
+        }
+    }
+    return editor.selection;
+}
+function includeNextNode(editor, currentNode) {
+    if (currentNode.parent === undefined) {
+        return getSelectionOfNode(editor, currentNode);
+    }
+    if (currentNode.parent.type === 'property') {
+        const currentIndex = currentNode.parent.parent.children.indexOf(currentNode.parent);
+        if (currentIndex < currentNode.parent.parent.children.length - 1) {
+            //return getSelectionOfNode(editor, currentNode.parent.parent!.children![currentIndex + 1]);
+            return new vscode.Selection(getNodeEnd(editor, currentNode.parent.parent.children[currentIndex + 1]), editor.selection.start);
+        }
+        else {
+            return new vscode.Selection(getNodeEnd(editor, currentNode.parent.parent.children[currentIndex]), editor.selection.start);
+        }
+    }
+    if (currentNode.parent.type === 'object' || currentNode.parent.type === 'array') {
+        const currentIndex = currentNode.parent.children.indexOf(currentNode);
+        if (currentIndex < currentNode.parent.children.length - 1) {
+            return new vscode.Selection(getNodeEnd(editor, currentNode.parent.children[currentIndex + 1]), editor.selection.start);
+            //return getSelectionOfNode(editor, currentNode.parent.children![currentIndex + 1]); 
+        }
+        else {
+            return new vscode.Selection(getNodeEnd(editor, currentNode.parent.children[currentIndex]), editor.selection.start);
+        }
+    }
+    return getSelectionOfNode(editor, currentNode);
+}
+function previousNode(editor, currentNode) {
+    if (currentNode.parent === undefined) {
+        return getSelectionOfNode(editor, currentNode);
+    }
+    if (currentNode.parent.type === 'property') {
+        const currentIndex = currentNode.parent.parent.children.indexOf(currentNode.parent);
+        if (currentIndex > 0) {
+            return getSelectionOfNode(editor, currentNode.parent.parent.children[currentIndex - 1]);
+        }
+        else {
+            return getSelectionOfNode(editor, currentNode.parent.parent.children[0]);
+        }
+    }
+    if (currentNode.parent.type === 'object' || currentNode.parent.type === 'array') {
+        const currentIndex = currentNode.parent.children.indexOf(currentNode);
+        if (currentIndex > 0) {
+            return getSelectionOfNode(editor, currentNode.parent.children[currentIndex - 1]);
+        }
+    }
+    return getSelectionOfNode(editor, currentNode);
+}
+function includePreviousNode(editor, currentNode) {
+    if (currentNode.parent === undefined) {
+        return getSelectionOfNode(editor, currentNode);
+    }
+    if (currentNode.parent.type === 'property') {
+        const currentIndex = currentNode.parent.parent.children.indexOf(currentNode.parent);
+        if (currentIndex > 0) {
+            return new vscode.Selection(editor.selection.end, getNodeStart(editor, currentNode.parent.parent.children[currentIndex - 1]));
+            //return getSelectionOfNode(editor, currentNode.parent.parent!.children![currentIndex - 1]); 
+        }
+        else {
+            return new vscode.Selection(editor.selection.end, getNodeStart(editor, currentNode.parent.parent.children[0]));
+        }
+    }
+    if (currentNode.parent.type === 'object' || currentNode.parent.type === 'array') {
+        const currentIndex = currentNode.parent.children.indexOf(currentNode);
+        if (currentIndex > 0) {
+            return new vscode.Selection(editor.selection.end, getNodeStart(editor, currentNode.parent.children[currentIndex - 1]));
+            //return getSelectionOfNode(editor, currentNode.parent.children![currentIndex - 1]); 
+        }
+        else {
+            return new vscode.Selection(editor.selection.end, getNodeStart(editor, currentNode.parent.children[0]));
+        }
+    }
+    return getSelectionOfNode(editor, currentNode);
+}
+function outOfNode(editor, currentNode) {
+    switch (currentNode.type) {
+        case 'property':
+            return getSelectionOfNode(editor, currentNode.parent ?? currentNode);
+        case 'string':
+            if (currentNode.parent === undefined) {
+                vscode.window.showInformationMessage('No parent!?!?!?!?!?!');
+                return getSelectionOfNode(editor, currentNode);
+            }
+            else if (currentNode.parent.type === 'property' && currentNode.parent.children?.[0] === currentNode) {
+                // The string is the key in a property. 
+                return getSelectionOfNode(editor, currentNode.parent?.parent ?? currentNode);
+            }
+            else {
+                return getSelectionOfNode(editor, currentNode.parent);
+            }
+        case 'boolean':
+            if (currentNode.parent === undefined) {
+                vscode.window.showInformationMessage('No parent!?!?!?!?!?!');
+                return getSelectionOfNode(editor, currentNode);
+            }
+            else {
+                return getSelectionOfNode(editor, currentNode.parent);
+            }
+        case 'number':
+            if (currentNode.parent === undefined) {
+                vscode.window.showInformationMessage('No parent!?!?!?!?!?!');
+                return getSelectionOfNode(editor, currentNode);
+            }
+            else {
+                return getSelectionOfNode(editor, currentNode.parent);
+            }
+        case 'array':
+            if (currentNode.parent === undefined) {
+                return getSelectionOfNode(editor, currentNode);
+            }
+            else {
+                return getSelectionOfNode(editor, currentNode.parent);
+            }
+        case 'object':
+            if (currentNode.parent === undefined) {
+                return getSelectionOfNode(editor, currentNode);
+            }
+            else {
+                return getSelectionOfNode(editor, currentNode.parent);
+            }
+        default:
+            vscode.window.showErrorMessage('Not implementer yet.... \n' + jsonNodeToString(currentNode));
+            return getSelectionOfNode(editor, currentNode);
+    }
+}
+function intoNode(editor, currentNode) {
+    switch (currentNode.type) {
+        case 'property':
+            return getSelectionOfNode(editor, currentNode.children?.[1] ?? currentNode);
+        case 'string':
+            if (currentNode.parent === undefined) {
+                vscode.window.showInformationMessage('No parent!?!?!?!?!?!');
+                return getSelectionOfNode(editor, currentNode);
+            }
+            else if (currentNode.parent.type === 'property' && currentNode.parent.children?.[0] === currentNode) {
+                // The string is the key in a property. Therefore we go to the value
+                return getSelectionOfNode(editor, currentNode.parent.children?.[1]);
+            }
+            else {
+                // The string is a value
+                return getSelectionOfNode(editor, currentNode);
+            }
+        case 'boolean':
+            return getSelectionOfNode(editor, currentNode);
+        case 'number':
+            return getSelectionOfNode(editor, currentNode);
+        case 'array':
+            if (currentNode.children === undefined || currentNode.children?.length <= 0) {
+                return getSelectionOfNode(editor, currentNode); // Just select current node. TDOD: Do nothing instead?
+            }
+            else {
+                return getSelectionOfNode(editor, currentNode.children?.[0]); // Step into first
+            }
+        case 'object':
+            if (currentNode.children === undefined || currentNode.children?.length <= 0) {
+                return getSelectionOfNode(editor, currentNode); // Just select current node. TDOD: Do nothing instead?
+            }
+            else {
+                return getSelectionOfNode(editor, currentNode.children?.[0]); // Step into first property key
+            }
+        default:
+            vscode.window.showErrorMessage('Not implementer yet.... \n' + jsonNodeToString(currentNode));
+            return getSelectionOfNode(editor, currentNode);
+    }
+}
+function getSelectionOfNode(editor, node) {
+    return new vscode.Selection(getNodeEnd(editor, node), getNodeStart(editor, node));
+}
+function getNodeStart(editor, node) {
+    return editor.document.positionAt(node.offset);
+}
+function getNodeEnd(editor, node) {
+    return editor.document.positionAt(node.offset + node.length);
+}
+function getCurrentNode(editor) {
+    const position = editor.selection.active;
+    return getCurrentNodeAtOffset(editor, editor.document.offsetAt(position));
+}
+function getCurrentNodeAtOffset(editor, offset) {
+    const text = editor.document.getText();
+    const tree = json.parseTree(text);
+    if (tree === undefined) {
+        vscode.window.showErrorMessage('tree is undefined');
+        return;
+    }
+    let node = json.findNodeAtOffset(tree, offset);
+    return node;
+}
+
+
+/***/ }),
+/* 1 */
+/***/ ((module) => {
+
+module.exports = require("vscode");
+
+/***/ }),
+/* 2 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ParseErrorCode: () => (/* binding */ ParseErrorCode),
+/* harmony export */   ScanError: () => (/* binding */ ScanError),
+/* harmony export */   SyntaxKind: () => (/* binding */ SyntaxKind),
+/* harmony export */   applyEdits: () => (/* binding */ applyEdits),
+/* harmony export */   createScanner: () => (/* binding */ createScanner),
+/* harmony export */   findNodeAtLocation: () => (/* binding */ findNodeAtLocation),
+/* harmony export */   findNodeAtOffset: () => (/* binding */ findNodeAtOffset),
+/* harmony export */   format: () => (/* binding */ format),
+/* harmony export */   getLocation: () => (/* binding */ getLocation),
+/* harmony export */   getNodePath: () => (/* binding */ getNodePath),
+/* harmony export */   getNodeValue: () => (/* binding */ getNodeValue),
+/* harmony export */   modify: () => (/* binding */ modify),
+/* harmony export */   parse: () => (/* binding */ parse),
+/* harmony export */   parseTree: () => (/* binding */ parseTree),
+/* harmony export */   printParseErrorCode: () => (/* binding */ printParseErrorCode),
+/* harmony export */   stripComments: () => (/* binding */ stripComments),
+/* harmony export */   visit: () => (/* binding */ visit)
+/* harmony export */ });
+/* harmony import */ var _impl_format__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _impl_edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
+/* harmony import */ var _impl_scanner__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4);
+/* harmony import */ var _impl_parser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(7);
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+
+
+
+
+/**
+ * Creates a JSON scanner on the given text.
+ * If ignoreTrivia is set, whitespaces or comments are ignored.
+ */
+const createScanner = _impl_scanner__WEBPACK_IMPORTED_MODULE_2__.createScanner;
+var ScanError;
+(function (ScanError) {
+    ScanError[ScanError["None"] = 0] = "None";
+    ScanError[ScanError["UnexpectedEndOfComment"] = 1] = "UnexpectedEndOfComment";
+    ScanError[ScanError["UnexpectedEndOfString"] = 2] = "UnexpectedEndOfString";
+    ScanError[ScanError["UnexpectedEndOfNumber"] = 3] = "UnexpectedEndOfNumber";
+    ScanError[ScanError["InvalidUnicode"] = 4] = "InvalidUnicode";
+    ScanError[ScanError["InvalidEscapeCharacter"] = 5] = "InvalidEscapeCharacter";
+    ScanError[ScanError["InvalidCharacter"] = 6] = "InvalidCharacter";
+})(ScanError || (ScanError = {}));
+var SyntaxKind;
+(function (SyntaxKind) {
+    SyntaxKind[SyntaxKind["OpenBraceToken"] = 1] = "OpenBraceToken";
+    SyntaxKind[SyntaxKind["CloseBraceToken"] = 2] = "CloseBraceToken";
+    SyntaxKind[SyntaxKind["OpenBracketToken"] = 3] = "OpenBracketToken";
+    SyntaxKind[SyntaxKind["CloseBracketToken"] = 4] = "CloseBracketToken";
+    SyntaxKind[SyntaxKind["CommaToken"] = 5] = "CommaToken";
+    SyntaxKind[SyntaxKind["ColonToken"] = 6] = "ColonToken";
+    SyntaxKind[SyntaxKind["NullKeyword"] = 7] = "NullKeyword";
+    SyntaxKind[SyntaxKind["TrueKeyword"] = 8] = "TrueKeyword";
+    SyntaxKind[SyntaxKind["FalseKeyword"] = 9] = "FalseKeyword";
+    SyntaxKind[SyntaxKind["StringLiteral"] = 10] = "StringLiteral";
+    SyntaxKind[SyntaxKind["NumericLiteral"] = 11] = "NumericLiteral";
+    SyntaxKind[SyntaxKind["LineCommentTrivia"] = 12] = "LineCommentTrivia";
+    SyntaxKind[SyntaxKind["BlockCommentTrivia"] = 13] = "BlockCommentTrivia";
+    SyntaxKind[SyntaxKind["LineBreakTrivia"] = 14] = "LineBreakTrivia";
+    SyntaxKind[SyntaxKind["Trivia"] = 15] = "Trivia";
+    SyntaxKind[SyntaxKind["Unknown"] = 16] = "Unknown";
+    SyntaxKind[SyntaxKind["EOF"] = 17] = "EOF";
+})(SyntaxKind || (SyntaxKind = {}));
+/**
+ * For a given offset, evaluate the location in the JSON document. Each segment in the location path is either a property name or an array index.
+ */
+const getLocation = _impl_parser__WEBPACK_IMPORTED_MODULE_3__.getLocation;
+/**
+ * Parses the given text and returns the object the JSON content represents. On invalid input, the parser tries to be as fault tolerant as possible, but still return a result.
+ * Therefore, always check the errors list to find out if the input was valid.
+ */
+const parse = _impl_parser__WEBPACK_IMPORTED_MODULE_3__.parse;
+/**
+ * Parses the given text and returns a tree representation the JSON content. On invalid input, the parser tries to be as fault tolerant as possible, but still return a result.
+ */
+const parseTree = _impl_parser__WEBPACK_IMPORTED_MODULE_3__.parseTree;
+/**
+ * Finds the node at the given path in a JSON DOM.
+ */
+const findNodeAtLocation = _impl_parser__WEBPACK_IMPORTED_MODULE_3__.findNodeAtLocation;
+/**
+ * Finds the innermost node at the given offset. If includeRightBound is set, also finds nodes that end at the given offset.
+ */
+const findNodeAtOffset = _impl_parser__WEBPACK_IMPORTED_MODULE_3__.findNodeAtOffset;
+/**
+ * Gets the JSON path of the given JSON DOM node
+ */
+const getNodePath = _impl_parser__WEBPACK_IMPORTED_MODULE_3__.getNodePath;
+/**
+ * Evaluates the JavaScript object of the given JSON DOM node
+ */
+const getNodeValue = _impl_parser__WEBPACK_IMPORTED_MODULE_3__.getNodeValue;
+/**
+ * Parses the given text and invokes the visitor functions for each object, array and literal reached.
+ */
+const visit = _impl_parser__WEBPACK_IMPORTED_MODULE_3__.visit;
+/**
+ * Takes JSON with JavaScript-style comments and remove
+ * them. Optionally replaces every none-newline character
+ * of comments with a replaceCharacter
+ */
+const stripComments = _impl_parser__WEBPACK_IMPORTED_MODULE_3__.stripComments;
+var ParseErrorCode;
+(function (ParseErrorCode) {
+    ParseErrorCode[ParseErrorCode["InvalidSymbol"] = 1] = "InvalidSymbol";
+    ParseErrorCode[ParseErrorCode["InvalidNumberFormat"] = 2] = "InvalidNumberFormat";
+    ParseErrorCode[ParseErrorCode["PropertyNameExpected"] = 3] = "PropertyNameExpected";
+    ParseErrorCode[ParseErrorCode["ValueExpected"] = 4] = "ValueExpected";
+    ParseErrorCode[ParseErrorCode["ColonExpected"] = 5] = "ColonExpected";
+    ParseErrorCode[ParseErrorCode["CommaExpected"] = 6] = "CommaExpected";
+    ParseErrorCode[ParseErrorCode["CloseBraceExpected"] = 7] = "CloseBraceExpected";
+    ParseErrorCode[ParseErrorCode["CloseBracketExpected"] = 8] = "CloseBracketExpected";
+    ParseErrorCode[ParseErrorCode["EndOfFileExpected"] = 9] = "EndOfFileExpected";
+    ParseErrorCode[ParseErrorCode["InvalidCommentToken"] = 10] = "InvalidCommentToken";
+    ParseErrorCode[ParseErrorCode["UnexpectedEndOfComment"] = 11] = "UnexpectedEndOfComment";
+    ParseErrorCode[ParseErrorCode["UnexpectedEndOfString"] = 12] = "UnexpectedEndOfString";
+    ParseErrorCode[ParseErrorCode["UnexpectedEndOfNumber"] = 13] = "UnexpectedEndOfNumber";
+    ParseErrorCode[ParseErrorCode["InvalidUnicode"] = 14] = "InvalidUnicode";
+    ParseErrorCode[ParseErrorCode["InvalidEscapeCharacter"] = 15] = "InvalidEscapeCharacter";
+    ParseErrorCode[ParseErrorCode["InvalidCharacter"] = 16] = "InvalidCharacter";
+})(ParseErrorCode || (ParseErrorCode = {}));
+function printParseErrorCode(code) {
+    switch (code) {
+        case 1 /* ParseErrorCode.InvalidSymbol */: return 'InvalidSymbol';
+        case 2 /* ParseErrorCode.InvalidNumberFormat */: return 'InvalidNumberFormat';
+        case 3 /* ParseErrorCode.PropertyNameExpected */: return 'PropertyNameExpected';
+        case 4 /* ParseErrorCode.ValueExpected */: return 'ValueExpected';
+        case 5 /* ParseErrorCode.ColonExpected */: return 'ColonExpected';
+        case 6 /* ParseErrorCode.CommaExpected */: return 'CommaExpected';
+        case 7 /* ParseErrorCode.CloseBraceExpected */: return 'CloseBraceExpected';
+        case 8 /* ParseErrorCode.CloseBracketExpected */: return 'CloseBracketExpected';
+        case 9 /* ParseErrorCode.EndOfFileExpected */: return 'EndOfFileExpected';
+        case 10 /* ParseErrorCode.InvalidCommentToken */: return 'InvalidCommentToken';
+        case 11 /* ParseErrorCode.UnexpectedEndOfComment */: return 'UnexpectedEndOfComment';
+        case 12 /* ParseErrorCode.UnexpectedEndOfString */: return 'UnexpectedEndOfString';
+        case 13 /* ParseErrorCode.UnexpectedEndOfNumber */: return 'UnexpectedEndOfNumber';
+        case 14 /* ParseErrorCode.InvalidUnicode */: return 'InvalidUnicode';
+        case 15 /* ParseErrorCode.InvalidEscapeCharacter */: return 'InvalidEscapeCharacter';
+        case 16 /* ParseErrorCode.InvalidCharacter */: return 'InvalidCharacter';
+    }
+    return '<unknown ParseErrorCode>';
+}
+/**
+ * Computes the edit operations needed to format a JSON document.
+ *
+ * @param documentText The input text
+ * @param range The range to format or `undefined` to format the full content
+ * @param options The formatting options
+ * @returns The edit operations describing the formatting changes to the original document following the format described in {@linkcode EditResult}.
+ * To apply the edit operations to the input, use {@linkcode applyEdits}.
+ */
+function format(documentText, range, options) {
+    return _impl_format__WEBPACK_IMPORTED_MODULE_0__.format(documentText, range, options);
+}
+/**
+ * Computes the edit operations needed to modify a value in the JSON document.
+ *
+ * @param documentText The input text
+ * @param path The path of the value to change. The path represents either to the document root, a property or an array item.
+ * If the path points to an non-existing property or item, it will be created.
+ * @param value The new value for the specified property or item. If the value is undefined,
+ * the property or item will be removed.
+ * @param options Options
+ * @returns The edit operations describing the changes to the original document, following the format described in {@linkcode EditResult}.
+ * To apply the edit operations to the input, use {@linkcode applyEdits}.
+ */
+function modify(text, path, value, options) {
+    return _impl_edit__WEBPACK_IMPORTED_MODULE_1__.setProperty(text, path, value, options);
+}
+/**
+ * Applies edits to an input string.
+ * @param text The input text
+ * @param edits Edit operations following the format described in {@linkcode EditResult}.
+ * @returns The text with the applied edits.
+ * @throws An error if the edit operations are not well-formed as described in {@linkcode EditResult}.
+ */
+function applyEdits(text, edits) {
+    let sortedEdits = edits.slice(0).sort((a, b) => {
+        const diff = a.offset - b.offset;
+        if (diff === 0) {
+            return a.length - b.length;
+        }
+        return diff;
+    });
+    let lastModifiedOffset = text.length;
+    for (let i = sortedEdits.length - 1; i >= 0; i--) {
+        let e = sortedEdits[i];
+        if (e.offset + e.length <= lastModifiedOffset) {
+            text = _impl_edit__WEBPACK_IMPORTED_MODULE_1__.applyEdit(text, e);
+        }
+        else {
+            throw new Error('Overlapping edit');
+        }
+        lastModifiedOffset = e.offset;
+    }
+    return text;
+}
+
+
+/***/ }),
+/* 3 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   format: () => (/* binding */ format),
+/* harmony export */   isEOL: () => (/* binding */ isEOL)
+/* harmony export */ });
+/* harmony import */ var _scanner__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
+/* harmony import */ var _string_intern__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5);
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+
+
+function format(documentText, range, options) {
+    let initialIndentLevel;
+    let formatText;
+    let formatTextStart;
+    let rangeStart;
+    let rangeEnd;
+    if (range) {
+        rangeStart = range.offset;
+        rangeEnd = rangeStart + range.length;
+        formatTextStart = rangeStart;
+        while (formatTextStart > 0 && !isEOL(documentText, formatTextStart - 1)) {
+            formatTextStart--;
+        }
+        let endOffset = rangeEnd;
+        while (endOffset < documentText.length && !isEOL(documentText, endOffset)) {
+            endOffset++;
+        }
+        formatText = documentText.substring(formatTextStart, endOffset);
+        initialIndentLevel = computeIndentLevel(formatText, options);
+    }
+    else {
+        formatText = documentText;
+        initialIndentLevel = 0;
+        formatTextStart = 0;
+        rangeStart = 0;
+        rangeEnd = documentText.length;
+    }
+    const eol = getEOL(options, documentText);
+    const eolFastPathSupported = _string_intern__WEBPACK_IMPORTED_MODULE_1__.supportedEols.includes(eol);
+    let numberLineBreaks = 0;
+    let indentLevel = 0;
+    let indentValue;
+    if (options.insertSpaces) {
+        indentValue = _string_intern__WEBPACK_IMPORTED_MODULE_1__.cachedSpaces[options.tabSize || 4] ?? repeat(_string_intern__WEBPACK_IMPORTED_MODULE_1__.cachedSpaces[1], options.tabSize || 4);
+    }
+    else {
+        indentValue = '\t';
+    }
+    const indentType = indentValue === '\t' ? '\t' : ' ';
+    let scanner = (0,_scanner__WEBPACK_IMPORTED_MODULE_0__.createScanner)(formatText, false);
+    let hasError = false;
+    function newLinesAndIndent() {
+        if (numberLineBreaks > 1) {
+            return repeat(eol, numberLineBreaks) + repeat(indentValue, initialIndentLevel + indentLevel);
+        }
+        const amountOfSpaces = indentValue.length * (initialIndentLevel + indentLevel);
+        if (!eolFastPathSupported || amountOfSpaces > _string_intern__WEBPACK_IMPORTED_MODULE_1__.cachedBreakLinesWithSpaces[indentType][eol].length) {
+            return eol + repeat(indentValue, initialIndentLevel + indentLevel);
+        }
+        if (amountOfSpaces <= 0) {
+            return eol;
+        }
+        return _string_intern__WEBPACK_IMPORTED_MODULE_1__.cachedBreakLinesWithSpaces[indentType][eol][amountOfSpaces];
+    }
+    function scanNext() {
+        let token = scanner.scan();
+        numberLineBreaks = 0;
+        while (token === 15 /* SyntaxKind.Trivia */ || token === 14 /* SyntaxKind.LineBreakTrivia */) {
+            if (token === 14 /* SyntaxKind.LineBreakTrivia */ && options.keepLines) {
+                numberLineBreaks += 1;
+            }
+            else if (token === 14 /* SyntaxKind.LineBreakTrivia */) {
+                numberLineBreaks = 1;
+            }
+            token = scanner.scan();
+        }
+        hasError = token === 16 /* SyntaxKind.Unknown */ || scanner.getTokenError() !== 0 /* ScanError.None */;
+        return token;
+    }
+    const editOperations = [];
+    function addEdit(text, startOffset, endOffset) {
+        if (!hasError && (!range || (startOffset < rangeEnd && endOffset > rangeStart)) && documentText.substring(startOffset, endOffset) !== text) {
+            editOperations.push({ offset: startOffset, length: endOffset - startOffset, content: text });
+        }
+    }
+    let firstToken = scanNext();
+    if (options.keepLines && numberLineBreaks > 0) {
+        addEdit(repeat(eol, numberLineBreaks), 0, 0);
+    }
+    if (firstToken !== 17 /* SyntaxKind.EOF */) {
+        let firstTokenStart = scanner.getTokenOffset() + formatTextStart;
+        let initialIndent = (indentValue.length * initialIndentLevel < 20) && options.insertSpaces
+            ? _string_intern__WEBPACK_IMPORTED_MODULE_1__.cachedSpaces[indentValue.length * initialIndentLevel]
+            : repeat(indentValue, initialIndentLevel);
+        addEdit(initialIndent, formatTextStart, firstTokenStart);
+    }
+    while (firstToken !== 17 /* SyntaxKind.EOF */) {
+        let firstTokenEnd = scanner.getTokenOffset() + scanner.getTokenLength() + formatTextStart;
+        let secondToken = scanNext();
+        let replaceContent = '';
+        let needsLineBreak = false;
+        while (numberLineBreaks === 0 && (secondToken === 12 /* SyntaxKind.LineCommentTrivia */ || secondToken === 13 /* SyntaxKind.BlockCommentTrivia */)) {
+            let commentTokenStart = scanner.getTokenOffset() + formatTextStart;
+            addEdit(_string_intern__WEBPACK_IMPORTED_MODULE_1__.cachedSpaces[1], firstTokenEnd, commentTokenStart);
+            firstTokenEnd = scanner.getTokenOffset() + scanner.getTokenLength() + formatTextStart;
+            needsLineBreak = secondToken === 12 /* SyntaxKind.LineCommentTrivia */;
+            replaceContent = needsLineBreak ? newLinesAndIndent() : '';
+            secondToken = scanNext();
+        }
+        if (secondToken === 2 /* SyntaxKind.CloseBraceToken */) {
+            if (firstToken !== 1 /* SyntaxKind.OpenBraceToken */) {
+                indentLevel--;
+            }
+            ;
+            if (options.keepLines && numberLineBreaks > 0 || !options.keepLines && firstToken !== 1 /* SyntaxKind.OpenBraceToken */) {
+                replaceContent = newLinesAndIndent();
+            }
+            else if (options.keepLines) {
+                replaceContent = _string_intern__WEBPACK_IMPORTED_MODULE_1__.cachedSpaces[1];
+            }
+        }
+        else if (secondToken === 4 /* SyntaxKind.CloseBracketToken */) {
+            if (firstToken !== 3 /* SyntaxKind.OpenBracketToken */) {
+                indentLevel--;
+            }
+            ;
+            if (options.keepLines && numberLineBreaks > 0 || !options.keepLines && firstToken !== 3 /* SyntaxKind.OpenBracketToken */) {
+                replaceContent = newLinesAndIndent();
+            }
+            else if (options.keepLines) {
+                replaceContent = _string_intern__WEBPACK_IMPORTED_MODULE_1__.cachedSpaces[1];
+            }
+        }
+        else {
+            switch (firstToken) {
+                case 3 /* SyntaxKind.OpenBracketToken */:
+                case 1 /* SyntaxKind.OpenBraceToken */:
+                    indentLevel++;
+                    if (options.keepLines && numberLineBreaks > 0 || !options.keepLines) {
+                        replaceContent = newLinesAndIndent();
+                    }
+                    else {
+                        replaceContent = _string_intern__WEBPACK_IMPORTED_MODULE_1__.cachedSpaces[1];
+                    }
+                    break;
+                case 5 /* SyntaxKind.CommaToken */:
+                    if (options.keepLines && numberLineBreaks > 0 || !options.keepLines) {
+                        replaceContent = newLinesAndIndent();
+                    }
+                    else {
+                        replaceContent = _string_intern__WEBPACK_IMPORTED_MODULE_1__.cachedSpaces[1];
+                    }
+                    break;
+                case 12 /* SyntaxKind.LineCommentTrivia */:
+                    replaceContent = newLinesAndIndent();
+                    break;
+                case 13 /* SyntaxKind.BlockCommentTrivia */:
+                    if (numberLineBreaks > 0) {
+                        replaceContent = newLinesAndIndent();
+                    }
+                    else if (!needsLineBreak) {
+                        replaceContent = _string_intern__WEBPACK_IMPORTED_MODULE_1__.cachedSpaces[1];
+                    }
+                    break;
+                case 6 /* SyntaxKind.ColonToken */:
+                    if (options.keepLines && numberLineBreaks > 0) {
+                        replaceContent = newLinesAndIndent();
+                    }
+                    else if (!needsLineBreak) {
+                        replaceContent = _string_intern__WEBPACK_IMPORTED_MODULE_1__.cachedSpaces[1];
+                    }
+                    break;
+                case 10 /* SyntaxKind.StringLiteral */:
+                    if (options.keepLines && numberLineBreaks > 0) {
+                        replaceContent = newLinesAndIndent();
+                    }
+                    else if (secondToken === 6 /* SyntaxKind.ColonToken */ && !needsLineBreak) {
+                        replaceContent = '';
+                    }
+                    break;
+                case 7 /* SyntaxKind.NullKeyword */:
+                case 8 /* SyntaxKind.TrueKeyword */:
+                case 9 /* SyntaxKind.FalseKeyword */:
+                case 11 /* SyntaxKind.NumericLiteral */:
+                case 2 /* SyntaxKind.CloseBraceToken */:
+                case 4 /* SyntaxKind.CloseBracketToken */:
+                    if (options.keepLines && numberLineBreaks > 0) {
+                        replaceContent = newLinesAndIndent();
+                    }
+                    else {
+                        if ((secondToken === 12 /* SyntaxKind.LineCommentTrivia */ || secondToken === 13 /* SyntaxKind.BlockCommentTrivia */) && !needsLineBreak) {
+                            replaceContent = _string_intern__WEBPACK_IMPORTED_MODULE_1__.cachedSpaces[1];
+                        }
+                        else if (secondToken !== 5 /* SyntaxKind.CommaToken */ && secondToken !== 17 /* SyntaxKind.EOF */) {
+                            hasError = true;
+                        }
+                    }
+                    break;
+                case 16 /* SyntaxKind.Unknown */:
+                    hasError = true;
+                    break;
+            }
+            if (numberLineBreaks > 0 && (secondToken === 12 /* SyntaxKind.LineCommentTrivia */ || secondToken === 13 /* SyntaxKind.BlockCommentTrivia */)) {
+                replaceContent = newLinesAndIndent();
+            }
+        }
+        if (secondToken === 17 /* SyntaxKind.EOF */) {
+            if (options.keepLines && numberLineBreaks > 0) {
+                replaceContent = newLinesAndIndent();
+            }
+            else {
+                replaceContent = options.insertFinalNewline ? eol : '';
+            }
+        }
+        const secondTokenStart = scanner.getTokenOffset() + formatTextStart;
+        addEdit(replaceContent, firstTokenEnd, secondTokenStart);
+        firstToken = secondToken;
+    }
+    return editOperations;
+}
+function repeat(s, count) {
+    let result = '';
+    for (let i = 0; i < count; i++) {
+        result += s;
+    }
+    return result;
+}
+function computeIndentLevel(content, options) {
+    let i = 0;
+    let nChars = 0;
+    const tabSize = options.tabSize || 4;
+    while (i < content.length) {
+        let ch = content.charAt(i);
+        if (ch === _string_intern__WEBPACK_IMPORTED_MODULE_1__.cachedSpaces[1]) {
+            nChars++;
+        }
+        else if (ch === '\t') {
+            nChars += tabSize;
+        }
+        else {
+            break;
+        }
+        i++;
+    }
+    return Math.floor(nChars / tabSize);
+}
+function getEOL(options, text) {
+    for (let i = 0; i < text.length; i++) {
+        const ch = text.charAt(i);
+        if (ch === '\r') {
+            if (i + 1 < text.length && text.charAt(i + 1) === '\n') {
+                return '\r\n';
+            }
+            return '\r';
+        }
+        else if (ch === '\n') {
+            return '\n';
+        }
+    }
+    return (options && options.eol) || '\n';
+}
+function isEOL(text, offset) {
+    return '\r\n'.indexOf(text.charAt(offset)) !== -1;
+}
+
+
+/***/ }),
+/* 4 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   createScanner: () => (/* binding */ createScanner)
+/* harmony export */ });
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+/**
+ * Creates a JSON scanner on the given text.
+ * If ignoreTrivia is set, whitespaces or comments are ignored.
+ */
+function createScanner(text, ignoreTrivia = false) {
+    const len = text.length;
+    let pos = 0, value = '', tokenOffset = 0, token = 16 /* SyntaxKind.Unknown */, lineNumber = 0, lineStartOffset = 0, tokenLineStartOffset = 0, prevTokenLineStartOffset = 0, scanError = 0 /* ScanError.None */;
+    function scanHexDigits(count, exact) {
+        let digits = 0;
+        let value = 0;
+        while (digits < count || !exact) {
+            let ch = text.charCodeAt(pos);
+            if (ch >= 48 /* CharacterCodes._0 */ && ch <= 57 /* CharacterCodes._9 */) {
+                value = value * 16 + ch - 48 /* CharacterCodes._0 */;
+            }
+            else if (ch >= 65 /* CharacterCodes.A */ && ch <= 70 /* CharacterCodes.F */) {
+                value = value * 16 + ch - 65 /* CharacterCodes.A */ + 10;
+            }
+            else if (ch >= 97 /* CharacterCodes.a */ && ch <= 102 /* CharacterCodes.f */) {
+                value = value * 16 + ch - 97 /* CharacterCodes.a */ + 10;
+            }
+            else {
+                break;
+            }
+            pos++;
+            digits++;
+        }
+        if (digits < count) {
+            value = -1;
+        }
+        return value;
+    }
+    function setPosition(newPosition) {
+        pos = newPosition;
+        value = '';
+        tokenOffset = 0;
+        token = 16 /* SyntaxKind.Unknown */;
+        scanError = 0 /* ScanError.None */;
+    }
+    function scanNumber() {
+        let start = pos;
+        if (text.charCodeAt(pos) === 48 /* CharacterCodes._0 */) {
+            pos++;
+        }
+        else {
+            pos++;
+            while (pos < text.length && isDigit(text.charCodeAt(pos))) {
+                pos++;
+            }
+        }
+        if (pos < text.length && text.charCodeAt(pos) === 46 /* CharacterCodes.dot */) {
+            pos++;
+            if (pos < text.length && isDigit(text.charCodeAt(pos))) {
+                pos++;
+                while (pos < text.length && isDigit(text.charCodeAt(pos))) {
+                    pos++;
+                }
+            }
+            else {
+                scanError = 3 /* ScanError.UnexpectedEndOfNumber */;
+                return text.substring(start, pos);
+            }
+        }
+        let end = pos;
+        if (pos < text.length && (text.charCodeAt(pos) === 69 /* CharacterCodes.E */ || text.charCodeAt(pos) === 101 /* CharacterCodes.e */)) {
+            pos++;
+            if (pos < text.length && text.charCodeAt(pos) === 43 /* CharacterCodes.plus */ || text.charCodeAt(pos) === 45 /* CharacterCodes.minus */) {
+                pos++;
+            }
+            if (pos < text.length && isDigit(text.charCodeAt(pos))) {
+                pos++;
+                while (pos < text.length && isDigit(text.charCodeAt(pos))) {
+                    pos++;
+                }
+                end = pos;
+            }
+            else {
+                scanError = 3 /* ScanError.UnexpectedEndOfNumber */;
+            }
+        }
+        return text.substring(start, end);
+    }
+    function scanString() {
+        let result = '', start = pos;
+        while (true) {
+            if (pos >= len) {
+                result += text.substring(start, pos);
+                scanError = 2 /* ScanError.UnexpectedEndOfString */;
+                break;
+            }
+            const ch = text.charCodeAt(pos);
+            if (ch === 34 /* CharacterCodes.doubleQuote */) {
+                result += text.substring(start, pos);
+                pos++;
+                break;
+            }
+            if (ch === 92 /* CharacterCodes.backslash */) {
+                result += text.substring(start, pos);
+                pos++;
+                if (pos >= len) {
+                    scanError = 2 /* ScanError.UnexpectedEndOfString */;
+                    break;
+                }
+                const ch2 = text.charCodeAt(pos++);
+                switch (ch2) {
+                    case 34 /* CharacterCodes.doubleQuote */:
+                        result += '\"';
+                        break;
+                    case 92 /* CharacterCodes.backslash */:
+                        result += '\\';
+                        break;
+                    case 47 /* CharacterCodes.slash */:
+                        result += '/';
+                        break;
+                    case 98 /* CharacterCodes.b */:
+                        result += '\b';
+                        break;
+                    case 102 /* CharacterCodes.f */:
+                        result += '\f';
+                        break;
+                    case 110 /* CharacterCodes.n */:
+                        result += '\n';
+                        break;
+                    case 114 /* CharacterCodes.r */:
+                        result += '\r';
+                        break;
+                    case 116 /* CharacterCodes.t */:
+                        result += '\t';
+                        break;
+                    case 117 /* CharacterCodes.u */:
+                        const ch3 = scanHexDigits(4, true);
+                        if (ch3 >= 0) {
+                            result += String.fromCharCode(ch3);
+                        }
+                        else {
+                            scanError = 4 /* ScanError.InvalidUnicode */;
+                        }
+                        break;
+                    default:
+                        scanError = 5 /* ScanError.InvalidEscapeCharacter */;
+                }
+                start = pos;
+                continue;
+            }
+            if (ch >= 0 && ch <= 0x1f) {
+                if (isLineBreak(ch)) {
+                    result += text.substring(start, pos);
+                    scanError = 2 /* ScanError.UnexpectedEndOfString */;
+                    break;
+                }
+                else {
+                    scanError = 6 /* ScanError.InvalidCharacter */;
+                    // mark as error but continue with string
+                }
+            }
+            pos++;
+        }
+        return result;
+    }
+    function scanNext() {
+        value = '';
+        scanError = 0 /* ScanError.None */;
+        tokenOffset = pos;
+        lineStartOffset = lineNumber;
+        prevTokenLineStartOffset = tokenLineStartOffset;
+        if (pos >= len) {
+            // at the end
+            tokenOffset = len;
+            return token = 17 /* SyntaxKind.EOF */;
+        }
+        let code = text.charCodeAt(pos);
+        // trivia: whitespace
+        if (isWhiteSpace(code)) {
+            do {
+                pos++;
+                value += String.fromCharCode(code);
+                code = text.charCodeAt(pos);
+            } while (isWhiteSpace(code));
+            return token = 15 /* SyntaxKind.Trivia */;
+        }
+        // trivia: newlines
+        if (isLineBreak(code)) {
+            pos++;
+            value += String.fromCharCode(code);
+            if (code === 13 /* CharacterCodes.carriageReturn */ && text.charCodeAt(pos) === 10 /* CharacterCodes.lineFeed */) {
+                pos++;
+                value += '\n';
+            }
+            lineNumber++;
+            tokenLineStartOffset = pos;
+            return token = 14 /* SyntaxKind.LineBreakTrivia */;
+        }
+        switch (code) {
+            // tokens: []{}:,
+            case 123 /* CharacterCodes.openBrace */:
+                pos++;
+                return token = 1 /* SyntaxKind.OpenBraceToken */;
+            case 125 /* CharacterCodes.closeBrace */:
+                pos++;
+                return token = 2 /* SyntaxKind.CloseBraceToken */;
+            case 91 /* CharacterCodes.openBracket */:
+                pos++;
+                return token = 3 /* SyntaxKind.OpenBracketToken */;
+            case 93 /* CharacterCodes.closeBracket */:
+                pos++;
+                return token = 4 /* SyntaxKind.CloseBracketToken */;
+            case 58 /* CharacterCodes.colon */:
+                pos++;
+                return token = 6 /* SyntaxKind.ColonToken */;
+            case 44 /* CharacterCodes.comma */:
+                pos++;
+                return token = 5 /* SyntaxKind.CommaToken */;
+            // strings
+            case 34 /* CharacterCodes.doubleQuote */:
+                pos++;
+                value = scanString();
+                return token = 10 /* SyntaxKind.StringLiteral */;
+            // comments
+            case 47 /* CharacterCodes.slash */:
+                const start = pos - 1;
+                // Single-line comment
+                if (text.charCodeAt(pos + 1) === 47 /* CharacterCodes.slash */) {
+                    pos += 2;
+                    while (pos < len) {
+                        if (isLineBreak(text.charCodeAt(pos))) {
+                            break;
+                        }
+                        pos++;
+                    }
+                    value = text.substring(start, pos);
+                    return token = 12 /* SyntaxKind.LineCommentTrivia */;
+                }
+                // Multi-line comment
+                if (text.charCodeAt(pos + 1) === 42 /* CharacterCodes.asterisk */) {
+                    pos += 2;
+                    const safeLength = len - 1; // For lookahead.
+                    let commentClosed = false;
+                    while (pos < safeLength) {
+                        const ch = text.charCodeAt(pos);
+                        if (ch === 42 /* CharacterCodes.asterisk */ && text.charCodeAt(pos + 1) === 47 /* CharacterCodes.slash */) {
+                            pos += 2;
+                            commentClosed = true;
+                            break;
+                        }
+                        pos++;
+                        if (isLineBreak(ch)) {
+                            if (ch === 13 /* CharacterCodes.carriageReturn */ && text.charCodeAt(pos) === 10 /* CharacterCodes.lineFeed */) {
+                                pos++;
+                            }
+                            lineNumber++;
+                            tokenLineStartOffset = pos;
+                        }
+                    }
+                    if (!commentClosed) {
+                        pos++;
+                        scanError = 1 /* ScanError.UnexpectedEndOfComment */;
+                    }
+                    value = text.substring(start, pos);
+                    return token = 13 /* SyntaxKind.BlockCommentTrivia */;
+                }
+                // just a single slash
+                value += String.fromCharCode(code);
+                pos++;
+                return token = 16 /* SyntaxKind.Unknown */;
+            // numbers
+            case 45 /* CharacterCodes.minus */:
+                value += String.fromCharCode(code);
+                pos++;
+                if (pos === len || !isDigit(text.charCodeAt(pos))) {
+                    return token = 16 /* SyntaxKind.Unknown */;
+                }
+            // found a minus, followed by a number so
+            // we fall through to proceed with scanning
+            // numbers
+            case 48 /* CharacterCodes._0 */:
+            case 49 /* CharacterCodes._1 */:
+            case 50 /* CharacterCodes._2 */:
+            case 51 /* CharacterCodes._3 */:
+            case 52 /* CharacterCodes._4 */:
+            case 53 /* CharacterCodes._5 */:
+            case 54 /* CharacterCodes._6 */:
+            case 55 /* CharacterCodes._7 */:
+            case 56 /* CharacterCodes._8 */:
+            case 57 /* CharacterCodes._9 */:
+                value += scanNumber();
+                return token = 11 /* SyntaxKind.NumericLiteral */;
+            // literals and unknown symbols
+            default:
+                // is a literal? Read the full word.
+                while (pos < len && isUnknownContentCharacter(code)) {
+                    pos++;
+                    code = text.charCodeAt(pos);
+                }
+                if (tokenOffset !== pos) {
+                    value = text.substring(tokenOffset, pos);
+                    // keywords: true, false, null
+                    switch (value) {
+                        case 'true': return token = 8 /* SyntaxKind.TrueKeyword */;
+                        case 'false': return token = 9 /* SyntaxKind.FalseKeyword */;
+                        case 'null': return token = 7 /* SyntaxKind.NullKeyword */;
+                    }
+                    return token = 16 /* SyntaxKind.Unknown */;
+                }
+                // some
+                value += String.fromCharCode(code);
+                pos++;
+                return token = 16 /* SyntaxKind.Unknown */;
+        }
+    }
+    function isUnknownContentCharacter(code) {
+        if (isWhiteSpace(code) || isLineBreak(code)) {
+            return false;
+        }
+        switch (code) {
+            case 125 /* CharacterCodes.closeBrace */:
+            case 93 /* CharacterCodes.closeBracket */:
+            case 123 /* CharacterCodes.openBrace */:
+            case 91 /* CharacterCodes.openBracket */:
+            case 34 /* CharacterCodes.doubleQuote */:
+            case 58 /* CharacterCodes.colon */:
+            case 44 /* CharacterCodes.comma */:
+            case 47 /* CharacterCodes.slash */:
+                return false;
+        }
+        return true;
+    }
+    function scanNextNonTrivia() {
+        let result;
+        do {
+            result = scanNext();
+        } while (result >= 12 /* SyntaxKind.LineCommentTrivia */ && result <= 15 /* SyntaxKind.Trivia */);
+        return result;
+    }
+    return {
+        setPosition: setPosition,
+        getPosition: () => pos,
+        scan: ignoreTrivia ? scanNextNonTrivia : scanNext,
+        getToken: () => token,
+        getTokenValue: () => value,
+        getTokenOffset: () => tokenOffset,
+        getTokenLength: () => pos - tokenOffset,
+        getTokenStartLine: () => lineStartOffset,
+        getTokenStartCharacter: () => tokenOffset - prevTokenLineStartOffset,
+        getTokenError: () => scanError,
+    };
+}
+function isWhiteSpace(ch) {
+    return ch === 32 /* CharacterCodes.space */ || ch === 9 /* CharacterCodes.tab */;
+}
+function isLineBreak(ch) {
+    return ch === 10 /* CharacterCodes.lineFeed */ || ch === 13 /* CharacterCodes.carriageReturn */;
+}
+function isDigit(ch) {
+    return ch >= 48 /* CharacterCodes._0 */ && ch <= 57 /* CharacterCodes._9 */;
+}
+var CharacterCodes;
+(function (CharacterCodes) {
+    CharacterCodes[CharacterCodes["lineFeed"] = 10] = "lineFeed";
+    CharacterCodes[CharacterCodes["carriageReturn"] = 13] = "carriageReturn";
+    CharacterCodes[CharacterCodes["space"] = 32] = "space";
+    CharacterCodes[CharacterCodes["_0"] = 48] = "_0";
+    CharacterCodes[CharacterCodes["_1"] = 49] = "_1";
+    CharacterCodes[CharacterCodes["_2"] = 50] = "_2";
+    CharacterCodes[CharacterCodes["_3"] = 51] = "_3";
+    CharacterCodes[CharacterCodes["_4"] = 52] = "_4";
+    CharacterCodes[CharacterCodes["_5"] = 53] = "_5";
+    CharacterCodes[CharacterCodes["_6"] = 54] = "_6";
+    CharacterCodes[CharacterCodes["_7"] = 55] = "_7";
+    CharacterCodes[CharacterCodes["_8"] = 56] = "_8";
+    CharacterCodes[CharacterCodes["_9"] = 57] = "_9";
+    CharacterCodes[CharacterCodes["a"] = 97] = "a";
+    CharacterCodes[CharacterCodes["b"] = 98] = "b";
+    CharacterCodes[CharacterCodes["c"] = 99] = "c";
+    CharacterCodes[CharacterCodes["d"] = 100] = "d";
+    CharacterCodes[CharacterCodes["e"] = 101] = "e";
+    CharacterCodes[CharacterCodes["f"] = 102] = "f";
+    CharacterCodes[CharacterCodes["g"] = 103] = "g";
+    CharacterCodes[CharacterCodes["h"] = 104] = "h";
+    CharacterCodes[CharacterCodes["i"] = 105] = "i";
+    CharacterCodes[CharacterCodes["j"] = 106] = "j";
+    CharacterCodes[CharacterCodes["k"] = 107] = "k";
+    CharacterCodes[CharacterCodes["l"] = 108] = "l";
+    CharacterCodes[CharacterCodes["m"] = 109] = "m";
+    CharacterCodes[CharacterCodes["n"] = 110] = "n";
+    CharacterCodes[CharacterCodes["o"] = 111] = "o";
+    CharacterCodes[CharacterCodes["p"] = 112] = "p";
+    CharacterCodes[CharacterCodes["q"] = 113] = "q";
+    CharacterCodes[CharacterCodes["r"] = 114] = "r";
+    CharacterCodes[CharacterCodes["s"] = 115] = "s";
+    CharacterCodes[CharacterCodes["t"] = 116] = "t";
+    CharacterCodes[CharacterCodes["u"] = 117] = "u";
+    CharacterCodes[CharacterCodes["v"] = 118] = "v";
+    CharacterCodes[CharacterCodes["w"] = 119] = "w";
+    CharacterCodes[CharacterCodes["x"] = 120] = "x";
+    CharacterCodes[CharacterCodes["y"] = 121] = "y";
+    CharacterCodes[CharacterCodes["z"] = 122] = "z";
+    CharacterCodes[CharacterCodes["A"] = 65] = "A";
+    CharacterCodes[CharacterCodes["B"] = 66] = "B";
+    CharacterCodes[CharacterCodes["C"] = 67] = "C";
+    CharacterCodes[CharacterCodes["D"] = 68] = "D";
+    CharacterCodes[CharacterCodes["E"] = 69] = "E";
+    CharacterCodes[CharacterCodes["F"] = 70] = "F";
+    CharacterCodes[CharacterCodes["G"] = 71] = "G";
+    CharacterCodes[CharacterCodes["H"] = 72] = "H";
+    CharacterCodes[CharacterCodes["I"] = 73] = "I";
+    CharacterCodes[CharacterCodes["J"] = 74] = "J";
+    CharacterCodes[CharacterCodes["K"] = 75] = "K";
+    CharacterCodes[CharacterCodes["L"] = 76] = "L";
+    CharacterCodes[CharacterCodes["M"] = 77] = "M";
+    CharacterCodes[CharacterCodes["N"] = 78] = "N";
+    CharacterCodes[CharacterCodes["O"] = 79] = "O";
+    CharacterCodes[CharacterCodes["P"] = 80] = "P";
+    CharacterCodes[CharacterCodes["Q"] = 81] = "Q";
+    CharacterCodes[CharacterCodes["R"] = 82] = "R";
+    CharacterCodes[CharacterCodes["S"] = 83] = "S";
+    CharacterCodes[CharacterCodes["T"] = 84] = "T";
+    CharacterCodes[CharacterCodes["U"] = 85] = "U";
+    CharacterCodes[CharacterCodes["V"] = 86] = "V";
+    CharacterCodes[CharacterCodes["W"] = 87] = "W";
+    CharacterCodes[CharacterCodes["X"] = 88] = "X";
+    CharacterCodes[CharacterCodes["Y"] = 89] = "Y";
+    CharacterCodes[CharacterCodes["Z"] = 90] = "Z";
+    CharacterCodes[CharacterCodes["asterisk"] = 42] = "asterisk";
+    CharacterCodes[CharacterCodes["backslash"] = 92] = "backslash";
+    CharacterCodes[CharacterCodes["closeBrace"] = 125] = "closeBrace";
+    CharacterCodes[CharacterCodes["closeBracket"] = 93] = "closeBracket";
+    CharacterCodes[CharacterCodes["colon"] = 58] = "colon";
+    CharacterCodes[CharacterCodes["comma"] = 44] = "comma";
+    CharacterCodes[CharacterCodes["dot"] = 46] = "dot";
+    CharacterCodes[CharacterCodes["doubleQuote"] = 34] = "doubleQuote";
+    CharacterCodes[CharacterCodes["minus"] = 45] = "minus";
+    CharacterCodes[CharacterCodes["openBrace"] = 123] = "openBrace";
+    CharacterCodes[CharacterCodes["openBracket"] = 91] = "openBracket";
+    CharacterCodes[CharacterCodes["plus"] = 43] = "plus";
+    CharacterCodes[CharacterCodes["slash"] = 47] = "slash";
+    CharacterCodes[CharacterCodes["formFeed"] = 12] = "formFeed";
+    CharacterCodes[CharacterCodes["tab"] = 9] = "tab";
+})(CharacterCodes || (CharacterCodes = {}));
+
+
+/***/ }),
+/* 5 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   cachedBreakLinesWithSpaces: () => (/* binding */ cachedBreakLinesWithSpaces),
+/* harmony export */   cachedSpaces: () => (/* binding */ cachedSpaces),
+/* harmony export */   supportedEols: () => (/* binding */ supportedEols)
+/* harmony export */ });
+const cachedSpaces = new Array(20).fill(0).map((_, index) => {
+    return ' '.repeat(index);
+});
+const maxCachedValues = 200;
+const cachedBreakLinesWithSpaces = {
+    ' ': {
+        '\n': new Array(maxCachedValues).fill(0).map((_, index) => {
+            return '\n' + ' '.repeat(index);
+        }),
+        '\r': new Array(maxCachedValues).fill(0).map((_, index) => {
+            return '\r' + ' '.repeat(index);
+        }),
+        '\r\n': new Array(maxCachedValues).fill(0).map((_, index) => {
+            return '\r\n' + ' '.repeat(index);
+        }),
+    },
+    '\t': {
+        '\n': new Array(maxCachedValues).fill(0).map((_, index) => {
+            return '\n' + '\t'.repeat(index);
+        }),
+        '\r': new Array(maxCachedValues).fill(0).map((_, index) => {
+            return '\r' + '\t'.repeat(index);
+        }),
+        '\r\n': new Array(maxCachedValues).fill(0).map((_, index) => {
+            return '\r\n' + '\t'.repeat(index);
+        }),
+    }
+};
+const supportedEols = ['\n', '\r', '\r\n'];
+
+
+/***/ }),
+/* 6 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   applyEdit: () => (/* binding */ applyEdit),
+/* harmony export */   isWS: () => (/* binding */ isWS),
+/* harmony export */   removeProperty: () => (/* binding */ removeProperty),
+/* harmony export */   setProperty: () => (/* binding */ setProperty)
+/* harmony export */ });
+/* harmony import */ var _format__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _parser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+
+
+function removeProperty(text, path, options) {
+    return setProperty(text, path, void 0, options);
+}
+function setProperty(text, originalPath, value, options) {
+    const path = originalPath.slice();
+    const errors = [];
+    const root = (0,_parser__WEBPACK_IMPORTED_MODULE_1__.parseTree)(text, errors);
+    let parent = void 0;
+    let lastSegment = void 0;
+    while (path.length > 0) {
+        lastSegment = path.pop();
+        parent = (0,_parser__WEBPACK_IMPORTED_MODULE_1__.findNodeAtLocation)(root, path);
+        if (parent === void 0 && value !== void 0) {
+            if (typeof lastSegment === 'string') {
+                value = { [lastSegment]: value };
+            }
+            else {
+                value = [value];
+            }
+        }
+        else {
+            break;
+        }
+    }
+    if (!parent) {
+        // empty document
+        if (value === void 0) { // delete
+            throw new Error('Can not delete in empty document');
+        }
+        return withFormatting(text, { offset: root ? root.offset : 0, length: root ? root.length : 0, content: JSON.stringify(value) }, options);
+    }
+    else if (parent.type === 'object' && typeof lastSegment === 'string' && Array.isArray(parent.children)) {
+        const existing = (0,_parser__WEBPACK_IMPORTED_MODULE_1__.findNodeAtLocation)(parent, [lastSegment]);
+        if (existing !== void 0) {
+            if (value === void 0) { // delete
+                if (!existing.parent) {
+                    throw new Error('Malformed AST');
+                }
+                const propertyIndex = parent.children.indexOf(existing.parent);
+                let removeBegin;
+                let removeEnd = existing.parent.offset + existing.parent.length;
+                if (propertyIndex > 0) {
+                    // remove the comma of the previous node
+                    let previous = parent.children[propertyIndex - 1];
+                    removeBegin = previous.offset + previous.length;
+                }
+                else {
+                    removeBegin = parent.offset + 1;
+                    if (parent.children.length > 1) {
+                        // remove the comma of the next node
+                        let next = parent.children[1];
+                        removeEnd = next.offset;
+                    }
+                }
+                return withFormatting(text, { offset: removeBegin, length: removeEnd - removeBegin, content: '' }, options);
+            }
+            else {
+                // set value of existing property
+                return withFormatting(text, { offset: existing.offset, length: existing.length, content: JSON.stringify(value) }, options);
+            }
+        }
+        else {
+            if (value === void 0) { // delete
+                return []; // property does not exist, nothing to do
+            }
+            const newProperty = `${JSON.stringify(lastSegment)}: ${JSON.stringify(value)}`;
+            const index = options.getInsertionIndex ? options.getInsertionIndex(parent.children.map(p => p.children[0].value)) : parent.children.length;
+            let edit;
+            if (index > 0) {
+                let previous = parent.children[index - 1];
+                edit = { offset: previous.offset + previous.length, length: 0, content: ',' + newProperty };
+            }
+            else if (parent.children.length === 0) {
+                edit = { offset: parent.offset + 1, length: 0, content: newProperty };
+            }
+            else {
+                edit = { offset: parent.offset + 1, length: 0, content: newProperty + ',' };
+            }
+            return withFormatting(text, edit, options);
+        }
+    }
+    else if (parent.type === 'array' && typeof lastSegment === 'number' && Array.isArray(parent.children)) {
+        const insertIndex = lastSegment;
+        if (insertIndex === -1) {
+            // Insert
+            const newProperty = `${JSON.stringify(value)}`;
+            let edit;
+            if (parent.children.length === 0) {
+                edit = { offset: parent.offset + 1, length: 0, content: newProperty };
+            }
+            else {
+                const previous = parent.children[parent.children.length - 1];
+                edit = { offset: previous.offset + previous.length, length: 0, content: ',' + newProperty };
+            }
+            return withFormatting(text, edit, options);
+        }
+        else if (value === void 0 && parent.children.length >= 0) {
+            // Removal
+            const removalIndex = lastSegment;
+            const toRemove = parent.children[removalIndex];
+            let edit;
+            if (parent.children.length === 1) {
+                // only item
+                edit = { offset: parent.offset + 1, length: parent.length - 2, content: '' };
+            }
+            else if (parent.children.length - 1 === removalIndex) {
+                // last item
+                let previous = parent.children[removalIndex - 1];
+                let offset = previous.offset + previous.length;
+                let parentEndOffset = parent.offset + parent.length;
+                edit = { offset, length: parentEndOffset - 2 - offset, content: '' };
+            }
+            else {
+                edit = { offset: toRemove.offset, length: parent.children[removalIndex + 1].offset - toRemove.offset, content: '' };
+            }
+            return withFormatting(text, edit, options);
+        }
+        else if (value !== void 0) {
+            let edit;
+            const newProperty = `${JSON.stringify(value)}`;
+            if (!options.isArrayInsertion && parent.children.length > lastSegment) {
+                const toModify = parent.children[lastSegment];
+                edit = { offset: toModify.offset, length: toModify.length, content: newProperty };
+            }
+            else if (parent.children.length === 0 || lastSegment === 0) {
+                edit = { offset: parent.offset + 1, length: 0, content: parent.children.length === 0 ? newProperty : newProperty + ',' };
+            }
+            else {
+                const index = lastSegment > parent.children.length ? parent.children.length : lastSegment;
+                const previous = parent.children[index - 1];
+                edit = { offset: previous.offset + previous.length, length: 0, content: ',' + newProperty };
+            }
+            return withFormatting(text, edit, options);
+        }
+        else {
+            throw new Error(`Can not ${value === void 0 ? 'remove' : (options.isArrayInsertion ? 'insert' : 'modify')} Array index ${insertIndex} as length is not sufficient`);
+        }
+    }
+    else {
+        throw new Error(`Can not add ${typeof lastSegment !== 'number' ? 'index' : 'property'} to parent of type ${parent.type}`);
+    }
+}
+function withFormatting(text, edit, options) {
+    if (!options.formattingOptions) {
+        return [edit];
+    }
+    // apply the edit
+    let newText = applyEdit(text, edit);
+    // format the new text
+    let begin = edit.offset;
+    let end = edit.offset + edit.content.length;
+    if (edit.length === 0 || edit.content.length === 0) { // insert or remove
+        while (begin > 0 && !(0,_format__WEBPACK_IMPORTED_MODULE_0__.isEOL)(newText, begin - 1)) {
+            begin--;
+        }
+        while (end < newText.length && !(0,_format__WEBPACK_IMPORTED_MODULE_0__.isEOL)(newText, end)) {
+            end++;
+        }
+    }
+    const edits = (0,_format__WEBPACK_IMPORTED_MODULE_0__.format)(newText, { offset: begin, length: end - begin }, { ...options.formattingOptions, keepLines: false });
+    // apply the formatting edits and track the begin and end offsets of the changes
+    for (let i = edits.length - 1; i >= 0; i--) {
+        const edit = edits[i];
+        newText = applyEdit(newText, edit);
+        begin = Math.min(begin, edit.offset);
+        end = Math.max(end, edit.offset + edit.length);
+        end += edit.content.length - edit.length;
+    }
+    // create a single edit with all changes
+    const editLength = text.length - (newText.length - end) - begin;
+    return [{ offset: begin, length: editLength, content: newText.substring(begin, end) }];
+}
+function applyEdit(text, edit) {
+    return text.substring(0, edit.offset) + edit.content + text.substring(edit.offset + edit.length);
+}
+function isWS(text, offset) {
+    return '\r\n \t'.indexOf(text.charAt(offset)) !== -1;
+}
+
+
+/***/ }),
+/* 7 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   contains: () => (/* binding */ contains),
+/* harmony export */   findNodeAtLocation: () => (/* binding */ findNodeAtLocation),
+/* harmony export */   findNodeAtOffset: () => (/* binding */ findNodeAtOffset),
+/* harmony export */   getLocation: () => (/* binding */ getLocation),
+/* harmony export */   getNodePath: () => (/* binding */ getNodePath),
+/* harmony export */   getNodeType: () => (/* binding */ getNodeType),
+/* harmony export */   getNodeValue: () => (/* binding */ getNodeValue),
+/* harmony export */   parse: () => (/* binding */ parse),
+/* harmony export */   parseTree: () => (/* binding */ parseTree),
+/* harmony export */   stripComments: () => (/* binding */ stripComments),
+/* harmony export */   visit: () => (/* binding */ visit)
+/* harmony export */ });
+/* harmony import */ var _scanner__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+
+var ParseOptions;
+(function (ParseOptions) {
+    ParseOptions.DEFAULT = {
+        allowTrailingComma: false
+    };
+})(ParseOptions || (ParseOptions = {}));
+/**
+ * For a given offset, evaluate the location in the JSON document. Each segment in the location path is either a property name or an array index.
+ */
+function getLocation(text, position) {
+    const segments = []; // strings or numbers
+    const earlyReturnException = new Object();
+    let previousNode = undefined;
+    const previousNodeInst = {
+        value: {},
+        offset: 0,
+        length: 0,
+        type: 'object',
+        parent: undefined
+    };
+    let isAtPropertyKey = false;
+    function setPreviousNode(value, offset, length, type) {
+        previousNodeInst.value = value;
+        previousNodeInst.offset = offset;
+        previousNodeInst.length = length;
+        previousNodeInst.type = type;
+        previousNodeInst.colonOffset = undefined;
+        previousNode = previousNodeInst;
+    }
+    try {
+        visit(text, {
+            onObjectBegin: (offset, length) => {
+                if (position <= offset) {
+                    throw earlyReturnException;
+                }
+                previousNode = undefined;
+                isAtPropertyKey = position > offset;
+                segments.push(''); // push a placeholder (will be replaced)
+            },
+            onObjectProperty: (name, offset, length) => {
+                if (position < offset) {
+                    throw earlyReturnException;
+                }
+                setPreviousNode(name, offset, length, 'property');
+                segments[segments.length - 1] = name;
+                if (position <= offset + length) {
+                    throw earlyReturnException;
+                }
+            },
+            onObjectEnd: (offset, length) => {
+                if (position <= offset) {
+                    throw earlyReturnException;
+                }
+                previousNode = undefined;
+                segments.pop();
+            },
+            onArrayBegin: (offset, length) => {
+                if (position <= offset) {
+                    throw earlyReturnException;
+                }
+                previousNode = undefined;
+                segments.push(0);
+            },
+            onArrayEnd: (offset, length) => {
+                if (position <= offset) {
+                    throw earlyReturnException;
+                }
+                previousNode = undefined;
+                segments.pop();
+            },
+            onLiteralValue: (value, offset, length) => {
+                if (position < offset) {
+                    throw earlyReturnException;
+                }
+                setPreviousNode(value, offset, length, getNodeType(value));
+                if (position <= offset + length) {
+                    throw earlyReturnException;
+                }
+            },
+            onSeparator: (sep, offset, length) => {
+                if (position <= offset) {
+                    throw earlyReturnException;
+                }
+                if (sep === ':' && previousNode && previousNode.type === 'property') {
+                    previousNode.colonOffset = offset;
+                    isAtPropertyKey = false;
+                    previousNode = undefined;
+                }
+                else if (sep === ',') {
+                    const last = segments[segments.length - 1];
+                    if (typeof last === 'number') {
+                        segments[segments.length - 1] = last + 1;
+                    }
+                    else {
+                        isAtPropertyKey = true;
+                        segments[segments.length - 1] = '';
+                    }
+                    previousNode = undefined;
+                }
+            }
+        });
+    }
+    catch (e) {
+        if (e !== earlyReturnException) {
+            throw e;
+        }
+    }
+    return {
+        path: segments,
+        previousNode,
+        isAtPropertyKey,
+        matches: (pattern) => {
+            let k = 0;
+            for (let i = 0; k < pattern.length && i < segments.length; i++) {
+                if (pattern[k] === segments[i] || pattern[k] === '*') {
+                    k++;
+                }
+                else if (pattern[k] !== '**') {
+                    return false;
+                }
+            }
+            return k === pattern.length;
+        }
+    };
+}
+/**
+ * Parses the given text and returns the object the JSON content represents. On invalid input, the parser tries to be as fault tolerant as possible, but still return a result.
+ * Therefore always check the errors list to find out if the input was valid.
+ */
+function parse(text, errors = [], options = ParseOptions.DEFAULT) {
+    let currentProperty = null;
+    let currentParent = [];
+    const previousParents = [];
+    function onValue(value) {
+        if (Array.isArray(currentParent)) {
+            currentParent.push(value);
+        }
+        else if (currentProperty !== null) {
+            currentParent[currentProperty] = value;
+        }
+    }
+    const visitor = {
+        onObjectBegin: () => {
+            const object = {};
+            onValue(object);
+            previousParents.push(currentParent);
+            currentParent = object;
+            currentProperty = null;
+        },
+        onObjectProperty: (name) => {
+            currentProperty = name;
+        },
+        onObjectEnd: () => {
+            currentParent = previousParents.pop();
+        },
+        onArrayBegin: () => {
+            const array = [];
+            onValue(array);
+            previousParents.push(currentParent);
+            currentParent = array;
+            currentProperty = null;
+        },
+        onArrayEnd: () => {
+            currentParent = previousParents.pop();
+        },
+        onLiteralValue: onValue,
+        onError: (error, offset, length) => {
+            errors.push({ error, offset, length });
+        }
+    };
+    visit(text, visitor, options);
+    return currentParent[0];
+}
+/**
+ * Parses the given text and returns a tree representation the JSON content. On invalid input, the parser tries to be as fault tolerant as possible, but still return a result.
+ */
+function parseTree(text, errors = [], options = ParseOptions.DEFAULT) {
+    let currentParent = { type: 'array', offset: -1, length: -1, children: [], parent: undefined }; // artificial root
+    function ensurePropertyComplete(endOffset) {
+        if (currentParent.type === 'property') {
+            currentParent.length = endOffset - currentParent.offset;
+            currentParent = currentParent.parent;
+        }
+    }
+    function onValue(valueNode) {
+        currentParent.children.push(valueNode);
+        return valueNode;
+    }
+    const visitor = {
+        onObjectBegin: (offset) => {
+            currentParent = onValue({ type: 'object', offset, length: -1, parent: currentParent, children: [] });
+        },
+        onObjectProperty: (name, offset, length) => {
+            currentParent = onValue({ type: 'property', offset, length: -1, parent: currentParent, children: [] });
+            currentParent.children.push({ type: 'string', value: name, offset, length, parent: currentParent });
+        },
+        onObjectEnd: (offset, length) => {
+            ensurePropertyComplete(offset + length); // in case of a missing value for a property: make sure property is complete
+            currentParent.length = offset + length - currentParent.offset;
+            currentParent = currentParent.parent;
+            ensurePropertyComplete(offset + length);
+        },
+        onArrayBegin: (offset, length) => {
+            currentParent = onValue({ type: 'array', offset, length: -1, parent: currentParent, children: [] });
+        },
+        onArrayEnd: (offset, length) => {
+            currentParent.length = offset + length - currentParent.offset;
+            currentParent = currentParent.parent;
+            ensurePropertyComplete(offset + length);
+        },
+        onLiteralValue: (value, offset, length) => {
+            onValue({ type: getNodeType(value), offset, length, parent: currentParent, value });
+            ensurePropertyComplete(offset + length);
+        },
+        onSeparator: (sep, offset, length) => {
+            if (currentParent.type === 'property') {
+                if (sep === ':') {
+                    currentParent.colonOffset = offset;
+                }
+                else if (sep === ',') {
+                    ensurePropertyComplete(offset);
+                }
+            }
+        },
+        onError: (error, offset, length) => {
+            errors.push({ error, offset, length });
+        }
+    };
+    visit(text, visitor, options);
+    const result = currentParent.children[0];
+    if (result) {
+        delete result.parent;
+    }
+    return result;
+}
+/**
+ * Finds the node at the given path in a JSON DOM.
+ */
+function findNodeAtLocation(root, path) {
+    if (!root) {
+        return undefined;
+    }
+    let node = root;
+    for (let segment of path) {
+        if (typeof segment === 'string') {
+            if (node.type !== 'object' || !Array.isArray(node.children)) {
+                return undefined;
+            }
+            let found = false;
+            for (const propertyNode of node.children) {
+                if (Array.isArray(propertyNode.children) && propertyNode.children[0].value === segment && propertyNode.children.length === 2) {
+                    node = propertyNode.children[1];
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                return undefined;
+            }
+        }
+        else {
+            const index = segment;
+            if (node.type !== 'array' || index < 0 || !Array.isArray(node.children) || index >= node.children.length) {
+                return undefined;
+            }
+            node = node.children[index];
+        }
+    }
+    return node;
+}
+/**
+ * Gets the JSON path of the given JSON DOM node
+ */
+function getNodePath(node) {
+    if (!node.parent || !node.parent.children) {
+        return [];
+    }
+    const path = getNodePath(node.parent);
+    if (node.parent.type === 'property') {
+        const key = node.parent.children[0].value;
+        path.push(key);
+    }
+    else if (node.parent.type === 'array') {
+        const index = node.parent.children.indexOf(node);
+        if (index !== -1) {
+            path.push(index);
+        }
+    }
+    return path;
+}
+/**
+ * Evaluates the JavaScript object of the given JSON DOM node
+ */
+function getNodeValue(node) {
+    switch (node.type) {
+        case 'array':
+            return node.children.map(getNodeValue);
+        case 'object':
+            const obj = Object.create(null);
+            for (let prop of node.children) {
+                const valueNode = prop.children[1];
+                if (valueNode) {
+                    obj[prop.children[0].value] = getNodeValue(valueNode);
+                }
+            }
+            return obj;
+        case 'null':
+        case 'string':
+        case 'number':
+        case 'boolean':
+            return node.value;
+        default:
+            return undefined;
+    }
+}
+function contains(node, offset, includeRightBound = false) {
+    return (offset >= node.offset && offset < (node.offset + node.length)) || includeRightBound && (offset === (node.offset + node.length));
+}
+/**
+ * Finds the most inner node at the given offset. If includeRightBound is set, also finds nodes that end at the given offset.
+ */
+function findNodeAtOffset(node, offset, includeRightBound = false) {
+    if (contains(node, offset, includeRightBound)) {
+        const children = node.children;
+        if (Array.isArray(children)) {
+            for (let i = 0; i < children.length && children[i].offset <= offset; i++) {
+                const item = findNodeAtOffset(children[i], offset, includeRightBound);
+                if (item) {
+                    return item;
+                }
+            }
+        }
+        return node;
+    }
+    return undefined;
+}
+/**
+ * Parses the given text and invokes the visitor functions for each object, array and literal reached.
+ */
+function visit(text, visitor, options = ParseOptions.DEFAULT) {
+    const _scanner = (0,_scanner__WEBPACK_IMPORTED_MODULE_0__.createScanner)(text, false);
+    // Important: Only pass copies of this to visitor functions to prevent accidental modification, and
+    // to not affect visitor functions which stored a reference to a previous JSONPath
+    const _jsonPath = [];
+    // Depth of onXXXBegin() callbacks suppressed. onXXXEnd() decrements this if it isn't 0 already.
+    // Callbacks are only called when this value is 0.
+    let suppressedCallbacks = 0;
+    function toNoArgVisit(visitFunction) {
+        return visitFunction ? () => suppressedCallbacks === 0 && visitFunction(_scanner.getTokenOffset(), _scanner.getTokenLength(), _scanner.getTokenStartLine(), _scanner.getTokenStartCharacter()) : () => true;
+    }
+    function toOneArgVisit(visitFunction) {
+        return visitFunction ? (arg) => suppressedCallbacks === 0 && visitFunction(arg, _scanner.getTokenOffset(), _scanner.getTokenLength(), _scanner.getTokenStartLine(), _scanner.getTokenStartCharacter()) : () => true;
+    }
+    function toOneArgVisitWithPath(visitFunction) {
+        return visitFunction ? (arg) => suppressedCallbacks === 0 && visitFunction(arg, _scanner.getTokenOffset(), _scanner.getTokenLength(), _scanner.getTokenStartLine(), _scanner.getTokenStartCharacter(), () => _jsonPath.slice()) : () => true;
+    }
+    function toBeginVisit(visitFunction) {
+        return visitFunction ?
+            () => {
+                if (suppressedCallbacks > 0) {
+                    suppressedCallbacks++;
+                }
+                else {
+                    let cbReturn = visitFunction(_scanner.getTokenOffset(), _scanner.getTokenLength(), _scanner.getTokenStartLine(), _scanner.getTokenStartCharacter(), () => _jsonPath.slice());
+                    if (cbReturn === false) {
+                        suppressedCallbacks = 1;
+                    }
+                }
+            }
+            : () => true;
+    }
+    function toEndVisit(visitFunction) {
+        return visitFunction ?
+            () => {
+                if (suppressedCallbacks > 0) {
+                    suppressedCallbacks--;
+                }
+                if (suppressedCallbacks === 0) {
+                    visitFunction(_scanner.getTokenOffset(), _scanner.getTokenLength(), _scanner.getTokenStartLine(), _scanner.getTokenStartCharacter());
+                }
+            }
+            : () => true;
+    }
+    const onObjectBegin = toBeginVisit(visitor.onObjectBegin), onObjectProperty = toOneArgVisitWithPath(visitor.onObjectProperty), onObjectEnd = toEndVisit(visitor.onObjectEnd), onArrayBegin = toBeginVisit(visitor.onArrayBegin), onArrayEnd = toEndVisit(visitor.onArrayEnd), onLiteralValue = toOneArgVisitWithPath(visitor.onLiteralValue), onSeparator = toOneArgVisit(visitor.onSeparator), onComment = toNoArgVisit(visitor.onComment), onError = toOneArgVisit(visitor.onError);
+    const disallowComments = options && options.disallowComments;
+    const allowTrailingComma = options && options.allowTrailingComma;
+    function scanNext() {
+        while (true) {
+            const token = _scanner.scan();
+            switch (_scanner.getTokenError()) {
+                case 4 /* ScanError.InvalidUnicode */:
+                    handleError(14 /* ParseErrorCode.InvalidUnicode */);
+                    break;
+                case 5 /* ScanError.InvalidEscapeCharacter */:
+                    handleError(15 /* ParseErrorCode.InvalidEscapeCharacter */);
+                    break;
+                case 3 /* ScanError.UnexpectedEndOfNumber */:
+                    handleError(13 /* ParseErrorCode.UnexpectedEndOfNumber */);
+                    break;
+                case 1 /* ScanError.UnexpectedEndOfComment */:
+                    if (!disallowComments) {
+                        handleError(11 /* ParseErrorCode.UnexpectedEndOfComment */);
+                    }
+                    break;
+                case 2 /* ScanError.UnexpectedEndOfString */:
+                    handleError(12 /* ParseErrorCode.UnexpectedEndOfString */);
+                    break;
+                case 6 /* ScanError.InvalidCharacter */:
+                    handleError(16 /* ParseErrorCode.InvalidCharacter */);
+                    break;
+            }
+            switch (token) {
+                case 12 /* SyntaxKind.LineCommentTrivia */:
+                case 13 /* SyntaxKind.BlockCommentTrivia */:
+                    if (disallowComments) {
+                        handleError(10 /* ParseErrorCode.InvalidCommentToken */);
+                    }
+                    else {
+                        onComment();
+                    }
+                    break;
+                case 16 /* SyntaxKind.Unknown */:
+                    handleError(1 /* ParseErrorCode.InvalidSymbol */);
+                    break;
+                case 15 /* SyntaxKind.Trivia */:
+                case 14 /* SyntaxKind.LineBreakTrivia */:
+                    break;
+                default:
+                    return token;
+            }
+        }
+    }
+    function handleError(error, skipUntilAfter = [], skipUntil = []) {
+        onError(error);
+        if (skipUntilAfter.length + skipUntil.length > 0) {
+            let token = _scanner.getToken();
+            while (token !== 17 /* SyntaxKind.EOF */) {
+                if (skipUntilAfter.indexOf(token) !== -1) {
+                    scanNext();
+                    break;
+                }
+                else if (skipUntil.indexOf(token) !== -1) {
+                    break;
+                }
+                token = scanNext();
+            }
+        }
+    }
+    function parseString(isValue) {
+        const value = _scanner.getTokenValue();
+        if (isValue) {
+            onLiteralValue(value);
+        }
+        else {
+            onObjectProperty(value);
+            // add property name afterwards
+            _jsonPath.push(value);
+        }
+        scanNext();
+        return true;
+    }
+    function parseLiteral() {
+        switch (_scanner.getToken()) {
+            case 11 /* SyntaxKind.NumericLiteral */:
+                const tokenValue = _scanner.getTokenValue();
+                let value = Number(tokenValue);
+                if (isNaN(value)) {
+                    handleError(2 /* ParseErrorCode.InvalidNumberFormat */);
+                    value = 0;
+                }
+                onLiteralValue(value);
+                break;
+            case 7 /* SyntaxKind.NullKeyword */:
+                onLiteralValue(null);
+                break;
+            case 8 /* SyntaxKind.TrueKeyword */:
+                onLiteralValue(true);
+                break;
+            case 9 /* SyntaxKind.FalseKeyword */:
+                onLiteralValue(false);
+                break;
+            default:
+                return false;
+        }
+        scanNext();
+        return true;
+    }
+    function parseProperty() {
+        if (_scanner.getToken() !== 10 /* SyntaxKind.StringLiteral */) {
+            handleError(3 /* ParseErrorCode.PropertyNameExpected */, [], [2 /* SyntaxKind.CloseBraceToken */, 5 /* SyntaxKind.CommaToken */]);
+            return false;
+        }
+        parseString(false);
+        if (_scanner.getToken() === 6 /* SyntaxKind.ColonToken */) {
+            onSeparator(':');
+            scanNext(); // consume colon
+            if (!parseValue()) {
+                handleError(4 /* ParseErrorCode.ValueExpected */, [], [2 /* SyntaxKind.CloseBraceToken */, 5 /* SyntaxKind.CommaToken */]);
+            }
+        }
+        else {
+            handleError(5 /* ParseErrorCode.ColonExpected */, [], [2 /* SyntaxKind.CloseBraceToken */, 5 /* SyntaxKind.CommaToken */]);
+        }
+        _jsonPath.pop(); // remove processed property name
+        return true;
+    }
+    function parseObject() {
+        onObjectBegin();
+        scanNext(); // consume open brace
+        let needsComma = false;
+        while (_scanner.getToken() !== 2 /* SyntaxKind.CloseBraceToken */ && _scanner.getToken() !== 17 /* SyntaxKind.EOF */) {
+            if (_scanner.getToken() === 5 /* SyntaxKind.CommaToken */) {
+                if (!needsComma) {
+                    handleError(4 /* ParseErrorCode.ValueExpected */, [], []);
+                }
+                onSeparator(',');
+                scanNext(); // consume comma
+                if (_scanner.getToken() === 2 /* SyntaxKind.CloseBraceToken */ && allowTrailingComma) {
+                    break;
+                }
+            }
+            else if (needsComma) {
+                handleError(6 /* ParseErrorCode.CommaExpected */, [], []);
+            }
+            if (!parseProperty()) {
+                handleError(4 /* ParseErrorCode.ValueExpected */, [], [2 /* SyntaxKind.CloseBraceToken */, 5 /* SyntaxKind.CommaToken */]);
+            }
+            needsComma = true;
+        }
+        onObjectEnd();
+        if (_scanner.getToken() !== 2 /* SyntaxKind.CloseBraceToken */) {
+            handleError(7 /* ParseErrorCode.CloseBraceExpected */, [2 /* SyntaxKind.CloseBraceToken */], []);
+        }
+        else {
+            scanNext(); // consume close brace
+        }
+        return true;
+    }
+    function parseArray() {
+        onArrayBegin();
+        scanNext(); // consume open bracket
+        let isFirstElement = true;
+        let needsComma = false;
+        while (_scanner.getToken() !== 4 /* SyntaxKind.CloseBracketToken */ && _scanner.getToken() !== 17 /* SyntaxKind.EOF */) {
+            if (_scanner.getToken() === 5 /* SyntaxKind.CommaToken */) {
+                if (!needsComma) {
+                    handleError(4 /* ParseErrorCode.ValueExpected */, [], []);
+                }
+                onSeparator(',');
+                scanNext(); // consume comma
+                if (_scanner.getToken() === 4 /* SyntaxKind.CloseBracketToken */ && allowTrailingComma) {
+                    break;
+                }
+            }
+            else if (needsComma) {
+                handleError(6 /* ParseErrorCode.CommaExpected */, [], []);
+            }
+            if (isFirstElement) {
+                _jsonPath.push(0);
+                isFirstElement = false;
+            }
+            else {
+                _jsonPath[_jsonPath.length - 1]++;
+            }
+            if (!parseValue()) {
+                handleError(4 /* ParseErrorCode.ValueExpected */, [], [4 /* SyntaxKind.CloseBracketToken */, 5 /* SyntaxKind.CommaToken */]);
+            }
+            needsComma = true;
+        }
+        onArrayEnd();
+        if (!isFirstElement) {
+            _jsonPath.pop(); // remove array index
+        }
+        if (_scanner.getToken() !== 4 /* SyntaxKind.CloseBracketToken */) {
+            handleError(8 /* ParseErrorCode.CloseBracketExpected */, [4 /* SyntaxKind.CloseBracketToken */], []);
+        }
+        else {
+            scanNext(); // consume close bracket
+        }
+        return true;
+    }
+    function parseValue() {
+        switch (_scanner.getToken()) {
+            case 3 /* SyntaxKind.OpenBracketToken */:
+                return parseArray();
+            case 1 /* SyntaxKind.OpenBraceToken */:
+                return parseObject();
+            case 10 /* SyntaxKind.StringLiteral */:
+                return parseString(true);
+            default:
+                return parseLiteral();
+        }
+    }
+    scanNext();
+    if (_scanner.getToken() === 17 /* SyntaxKind.EOF */) {
+        if (options.allowEmptyContent) {
+            return true;
+        }
+        handleError(4 /* ParseErrorCode.ValueExpected */, [], []);
+        return false;
+    }
+    if (!parseValue()) {
+        handleError(4 /* ParseErrorCode.ValueExpected */, [], []);
+        return false;
+    }
+    if (_scanner.getToken() !== 17 /* SyntaxKind.EOF */) {
+        handleError(9 /* ParseErrorCode.EndOfFileExpected */, [], []);
+    }
+    return true;
+}
+/**
+ * Takes JSON with JavaScript-style comments and remove
+ * them. Optionally replaces every none-newline character
+ * of comments with a replaceCharacter
+ */
+function stripComments(text, replaceCh) {
+    let _scanner = (0,_scanner__WEBPACK_IMPORTED_MODULE_0__.createScanner)(text), parts = [], kind, offset = 0, pos;
+    do {
+        pos = _scanner.getPosition();
+        kind = _scanner.scan();
+        switch (kind) {
+            case 12 /* SyntaxKind.LineCommentTrivia */:
+            case 13 /* SyntaxKind.BlockCommentTrivia */:
+            case 17 /* SyntaxKind.EOF */:
+                if (offset !== pos) {
+                    parts.push(text.substring(offset, pos));
+                }
+                if (replaceCh !== undefined) {
+                    parts.push(_scanner.getTokenValue().replace(/[^\r\n]/g, replaceCh));
+                }
+                offset = _scanner.getPosition();
+                break;
+        }
+    } while (kind !== 17 /* SyntaxKind.EOF */);
+    return parts.join('');
+}
+function getNodeType(value) {
+    switch (typeof value) {
+        case 'boolean': return 'boolean';
+        case 'number': return 'number';
+        case 'string': return 'string';
+        case 'object': {
+            if (!value) {
+                return 'null';
+            }
+            else if (Array.isArray(value)) {
+                return 'array';
+            }
+            return 'object';
+        }
+        default: return 'null';
+    }
+}
+
+
+/***/ })
+/******/ 	]);
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module is referenced by other modules so it can't be inlined
+/******/ 	var __webpack_exports__ = __webpack_require__(0);
+/******/ 	module.exports = __webpack_exports__;
+/******/ 	
+/******/ })()
+;
+//# sourceMappingURL=extension.js.map
