@@ -1,0 +1,5 @@
+# Ignore built ts files
+dist/**/*
+
+# Ignore vs code extension package file
+*.vsix
